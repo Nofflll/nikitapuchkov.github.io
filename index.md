@@ -15,31 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <img id="theme-toggle" src="assets/icons/sun-moon.svg" alt="Toggle theme">
 
+<main>
 <div class="fade-in">
   # 🌿 Nikita Puchkov  
   **Software Engineer | Future ML Engineer | Python + AI + Aviation**
 </div>
 
 <div class="fade-in" style="animation-delay: 0.2s">
-  Welcome to my natural-code portfolio 🌱 — built with clean code, smooth design, and gentle interactions.
+  Welcome to my natural-code portfolio — built with clean design, smooth interactions, and soft aesthetics.
 </div>
 
 ---
 
-## 🌱 About Me {style="margin-top: 40px;"}
+## 🌱 About Me
 
 <div class="fade-in" style="animation-delay: 0.4s">
-I’m an aviation software engineer with strong math foundation, building AI assistant tools. Currently transitioning into ML, exploring neural interfaces, nature-inspired algorithms, and intuitive UI.
+I’m an aviation software engineer with strong mathematical foundations. I build AI assistant tools and computational models. Currently transitioning into ML, exploring nature-inspired algorithms and intuitive UIs.
 </div>
 
 ---
 
-## 🌾 Projects
+## 🚀 Projects
 
 <div class="fade-in" style="animation-delay: 0.6s">
 <div class="project-card">
   <h3>🧠 AI Assistant for Engineers</h3>
-  <p>Conversational assistant using OpenAI API to support engineers with documents and calculations.</p>
+  <p>Conversational tool using the OpenAI API to support engineers with documents and calculations.</p>
   <p><strong>Tech:</strong> Python, Flask, GPT API, SQLite</p>
 </div>
 
@@ -63,16 +64,21 @@ I’m an aviation software engineer with strong math foundation, building AI ass
 
 ---
 
-## 🌍 Contact
+## 📄 Resume & Contact
 
 <div class="fade-in" style="animation-delay: 1s">
+[📄 Download Resume](resume.pdf){:target="_blank"}  
+</div>
+
+<div class="fade-in" style="animation-delay: 1.2s">
 <span class="icon-link"><a href="https://github.com/Nofflll"><img src="assets/icons/github.svg" alt="GitHub"></a></span>
 <span class="icon-link"><a href="https://linkedin.com/in/nikitapuchkov"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a></span>
 <span class="icon-link"><a href="mailto:your_email@example.com"><img src="assets/icons/email.svg" alt="Email"></a></span>
 </div>
 
----
-
-<div class="fade-in" style="animation-delay: 1.2s">
-<center><sub>Nature meets code – built with ❤️ and smooth ✨</sub></center>
-</div>
+<footer>
+  <div class="fade-in" style="animation-delay: 1.4s">
+    <sub>Nature meets code – built with ❤️ and soft ✨</sub>
+  </div>
+</footer>
+</main>
