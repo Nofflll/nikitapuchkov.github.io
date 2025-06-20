@@ -1,98 +1,147 @@
-/* Общий стиль */
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  margin: 0;
-  padding: 0 20px;
-  transition: background-color 0.5s, color 0.5s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-main {
-  max-width: 800px;
-  width: 100%;
-}
-
-/* Цветовые палитры */
+/* === Цветовые переменные === */
 :root {
   --bg: #f3f7f4;
   --text: #2f3e2e;
   --accent: #75c27f;
+  --accent-dark: #4e8c60;
   --card-bg: #ffffff;
-  --card-shadow: rgba(0,0,0,0.05);
+  --shadow: rgba(0, 0, 0, 0.05);
+  --link: #3b7d4e;
+  --link-hover: #2f5c3c;
 }
 
 .dark {
   --bg: #1e1e1e;
   --text: #e0e0e0;
-  --accent: #4c7d57;
+  --accent: #7bd38c;
+  --accent-dark: #5fa472;
   --card-bg: #2a2a2a;
-  --card-shadow: rgba(0,0,0,0.2);
+  --shadow: rgba(0, 0, 0, 0.2);
+  --link: #b3ffcc;
+  --link-hover: #8ae6a6;
 }
 
-/* Ссылки */
+/* === Базовая стилизация === */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.6s ease, color 0.6s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  max-width: 850px;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* === Заголовки и текст === */
+h1, h2, h3 {
+  color: var(--text);
+  text-align: center;
+  margin-top: 1.2em;
+}
+
+p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+
+/* === Ссылки === */
 a {
-  color: var(--accent);
+  color: var(--link);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 a:hover {
-  color: darken(var(--accent), 10%);
+  color: var(--link-hover);
   text-decoration: underline;
 }
 
-/* Заголовки */
-h1, h2, h3 {
-  text-align: center;
-  color: var(--text);
-}
-
-/* Карточки проектов */
+/* === Карточки проектов === */
 .project-card {
   background-color: var(--card-bg);
   border-left: 5px solid var(--accent);
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px var(--card-shadow);
-  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px var(--card-shadow);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px var(--shadow);
 }
 
-/* Анимации появления при загрузке */
+/* === Анимация появления (fade-in) === */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards;
 }
 @keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Контейнер иконок */
+/* === Иконки соцсетей === */
 .icon-link img {
-  width: 24px;
+  width: 28px;
+  margin: 0 10px;
   filter: brightness(0) invert(0);
-  transition: filter 0.3s;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 .dark .icon-link img {
   filter: brightness(0) invert(1);
 }
 .icon-link img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
-/* Переключатель темы */
+/* === Переключатель темы === */
 #theme-toggle {
   cursor: pointer;
   position: fixed;
   top: 20px;
   right: 20px;
   width: 32px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+#theme-toggle:hover {
+  opacity: 1;
+}
+
+/* === Кнопки === */
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: var(--accent-dark);
+}
+
+/* === Подвал === */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.7;
 }
