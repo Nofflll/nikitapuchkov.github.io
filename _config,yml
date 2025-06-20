@@ -1,3 +1,5 @@
 title: Nikita Puchkov
-description: Software & ML Engineer Portfolio
+description: Software Engineer & ML Developer Portfolio
 theme: jekyll-theme-minimal
+logo: /assets/profile.png # если добавим фото
+show_downloads: false
