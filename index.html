@@ -1,92 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Nikita Puchkov — Portfolio</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
   <script defer src="assets/main.js"></script>
+
+  <!-- Multilanguage -->
+  <script type="application/json" id="lang-en">{
+    "about":"I'm a software engineer in aerospace... transitioning to ML.",
+    "mlHeading":"🧠 ML Transition",
+    "mlList":["Self‑studying ML (theory, PyTorch, datasets)","Building a personal AI assistant","Learning Finnish (A2)","Engineering mindset + data‑driven systems"],
+    "projectsHeading":"🚀 Projects",
+    "proj1Title":"AI Assistant for Aerospace Engineers",
+    "proj1Text":"ML‑powered assistant predicting aerodynamic parameters based on historical data.",
+    "proj2Title":"Personal AI Assistant",
+    "proj2Text":"Smart assistant to automate tasks, routines, and device control.",
+    "careerHeading":"🎯 Career Goals",
+    "careerText":"Aiming for ML Engineer roles in Europe, especially Finland, where I embrace technology, nature, and design harmony.",
+    "resumeHeading":"📄 Resume",
+    "resumeButton":"📄 Download Resume",
+    "resumeSummary":"Software Engineer (1+ year) → ML‑focused; aviation tools, predictive systems, microservices.",
+    "contactHeading":"📬 Contact",
+    "footer":"Made with ❤️ for code, clarity & the future of AI"
+  }</script>
+  <script type="application/json" id="lang-ru">{
+    "about":"Я инженер‑программист в авиационной отрасли... в процессе перехода в ML.",
+    "mlHeading":"🧠 Переход в ML",
+    "mlList":["Самообразование в ML (теория, PyTorch, датасеты)","Создание личного AI‑ассистента","Изучаю финский язык (A2)","Инженерное мышление + системы на основе данных"],
+    "projectsHeading":"🚀 Проекты",
+    "proj1Title":"ИИ‑ассистент для авиационных инженеров",
+    "proj1Text":"ML‑ассистент, предсказывающий аэродинамические параметры на основе данных.",
+    "proj2Title":"Персональный AI‑ассистент",
+    "proj2Text":"Умный ассистент: автоматизация задач, расписаний и управления устройствами.",
+    "careerHeading":"🎯 Цели в карьере",
+    "careerText":"Устройся ML‑инженером в Европе, особенно в Финляндии, где ценятся технологии, природа и дизайн.",
+    "resumeHeading":"📄 Резюме",
+    "resumeButton":"📄 Скачать резюме",
+    "resumeSummary":"Софт‑инженер (1+ год) с фокусом на ML; авиационные инструменты, предсказания, микросервисы.",
+    "contactHeading":"📬 Контакты",
+    "footer":"Сделано с ❤️ для кода, ясности и будущего AI"
+  }</script>
+  <script type="application/json" id="lang-fi">{
+    "about":"Olen ohjelmistoinsinööri ilmailualalla... siirtymässä koneoppimisen pariin.",
+    "mlHeading":"🧠 Siirtymä ML:ään",
+    "mlList":["Itseopiskelu ML:ää (teoria, PyTorch, datasetit)","Rakennan henkilökohtaista AI‑avustajaa","Opiskelen suomea (A2)","Insinööriajattelu + dataohjatut järjestelmät"],
+    "projectsHeading":"🚀 Projektit",
+    "proj1Title":"AI‑avustaja ilmailuinsinööreille",
+    "proj1Text":"ML‑avustaja ennustaa aerodynamiikan parametreja historiallisten tietojen perusteella.",
+    "proj2Title":"Henkilökohtainen AI‑avustaja",
+    "proj2Text":"Älykäs avustaja automatisoi tehtäviä, rutiineja ja laitteiden hallintaa.",
+    "careerHeading":"🎯 Uratavoitteet",
+    "careerText":"Pyydän ML‑insinöörin tehtävää Euroopassa, erityisesti Suomessa, jossa teknologia, luonto ja muotoilu ovat tärkeitä.",
+    "resumeHeading":"📄 CV",
+    "resumeButton":"📄 Lataa CV",
+    "resumeSummary":"Ohjelmisto‑insinööri (1+ v) → ML‑suunta; ilmailutyökalut, ennusteet, mikropalvelut.",
+    "contactHeading":"📬 Ota yhteyttä",
+    "footer":"Tehty ❤️ koodiin, selkeyteen ja AI‑tulevaisuuteen"
+  }</script>
 </head>
 <body>
+  <div class="toolbar">
+    <button id="theme-toggle">🌙</button>
+    <div class="lang-switch">
+      <button onclick="setLang('en')">EN</button>
+      <button onclick="setLang('ru')">RU</button>
+      <button onclick="setLang('fi')">FI</button>
+    </div>
+  </div>
+
   <main>
     <h1>🌿 Nikita Puchkov</h1>
     <p class="subtitle">Software Engineer → Future ML Engineer | Aviation + AI</p>
 
-    <section>
-      <h2>🌱 About Me</h2>
-      <p>
-        I'm a software engineer working in the aerospace industry. My focus is on developing engineering tools, predictive systems,
-        and AI prototypes to support complex technical workflows. I’m currently transitioning into a Machine Learning Engineer role and
-        actively expanding my skills in applied ML, Python, and intelligent systems.
-      </p>
-    </section>
-
-    <section>
-      <h2>🧠 ML Transition</h2>
-      <ul>
-        <li>Self-studying machine learning (ML theory, PyTorch, time series, and tabular data)</li>
-        <li>Currently building a personal AI assistant to automate daily tasks and environment control</li>
-        <li>Actively learning Finnish to adapt for future relocation</li>
-        <li>Combining engineering mindset with data-driven systems</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>🚀 Projects</h2>
-      <ul>
-        <li>
-          <strong>AI Assistant for Aerospace Engineers</strong><br>
-          Developed an internal ML-powered assistant for engineers. Instead of performing raw calculations, it predicted key aerodynamic and structural parameters based on input context and historical data.
-          <br><em>Technologies:</em> Python, NumPy, SQLite, Scikit-learn, Flask
-        </li>
-        <li>
-          <strong>Personal AI Assistant</strong><br>
-          In development: a smart assistant to manage local tasks, daily routines, device control, and context-based dialogue.
-          <br><em>Technologies:</em> Python, LLM APIs, Voice IO, SQLite, Linux
-        </li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>🎯 Career Goals</h2>
-      <p>
-        I'm working toward becoming a full-time ML Engineer in Europe, with a strong preference for Finland. I'm especially inspired by the balance between technology and nature, and the respect for clean engineering and calm design found in Finnish culture.
-      </p>
-      <button class="toggle-btn" onclick="toggleFinland()">Why Finland?</button>
-      <div id="finland-block" class="hidden">
-        <p>
-          Finland aligns deeply with my personal and professional values. I'm currently learning the Finnish language (A2 level) and exploring its tech ecosystem.
-          I admire the country's approach to clean technology, privacy-respecting AI, and ethical engineering. My long-term goal is to contribute to
-          a Finnish or international team building meaningful, reliable AI systems.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <h2>📄 Resume</h2>
-      <a href="resume.pdf" class="button" target="_blank">📄 Download Resume</a>
-      <ul>
-        <li><strong>Position:</strong> Software Engineer, transitioning to ML Engineer</li>
-        <li><strong>Experience:</strong> 1+ year in aviation software; microservices, ML prototype, predictive tools</li>
-        <li><strong>Languages:</strong> Python, C++, SQL, MATLAB</li>
-        <li><strong>Frameworks:</strong> PyTorch, FastAPI, Flask, Pandas, NumPy</li>
-        <li><strong>Tools:</strong> Docker, Git, Linux, SQLite, Bash</li>
-        <li><strong>Soft Skills:</strong> Precision, ownership, long-term thinking</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>📬 Contact</h2>
-      <div class="icons">
-        <a href="https://github.com/Nofflll" target="_blank"><img src="assets/icons/github.svg" alt="GitHub" /></a>
-        <a href="https://linkedin.com/in/nikitapuchkov" target="_blank"><img src="assets/icons/linkedin.svg" alt="LinkedIn" /></a>
-        <a href="mailto:your_email@example.com"><img src="assets/icons/email.svg" alt="Email" /></a>
-      </div>
-    </section>
-
-    <footer>
-      <p>Made with ❤️ for code, clarity & the future of AI</p>
-    </footer>
+    <section id="about"></section>
+    <section id="ml-transition"></section>
+    <section id="projects"></section>
+    <section id="career"></section>
+    <section id="resume"></section>
+    <section id="contact"></section>
+    <footer></footer>
   </main>
 </body>
 </html>
