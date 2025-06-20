@@ -13,7 +13,8 @@
     margin: 0; 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background: linear-gradient(135deg, #e0f2f1, #fafafa);
+    background:
+      linear-gradient(135deg, #e0f2f1, #fafafa);
     color: #222;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
@@ -22,7 +23,27 @@
     display: flex;
     justify-content: center;
     padding: 2rem 1rem;
+    overflow-x: hidden;
+    perspective: 1000px;
   }
+
+  /* Parallax background */
+  body::before {
+    content: "";
+    position: fixed;
+    top: -10vh;
+    left: -10vw;
+    width: 120vw;
+    height: 120vh;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(102,187,106,0.15), transparent 30%),
+      radial-gradient(circle at 80% 80%, rgba(56,142,60,0.15), transparent 30%);
+    pointer-events: none;
+    z-index: -1;
+    transform: translateZ(0);
+    transition: transform 0.1s ease-out;
+  }
+
   main {
     max-width: 720px;
     width: 100%;
@@ -70,6 +91,7 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     font-size: 0.95rem;
+    user-select: none;
   }
   #lang-switcher button.active,
   #lang-switcher button:hover {
@@ -109,6 +131,16 @@
   }
   section ul li {
     margin-bottom: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 6px;
+  }
+  /* Hover effect on skills & projects */
+  #skills ul li:hover,
+  #projects ul li:hover {
+    background: #e8f5e9;
+    box-shadow: 0 6px 10px rgba(56, 142, 60, 0.25);
+    transform: translateY(-4px);
+    cursor: default;
   }
 
   /* Button */
@@ -149,6 +181,7 @@
     text-decoration: none;
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s;
+    user-select: none;
   }
   a.resume-link:hover {
     border-color: #66bb6a;
@@ -185,11 +218,48 @@
     color: #777;
     user-select: none;
   }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    main {
+      padding: 2rem 1.5rem 2.5rem;
+      border-radius: 10px;
+      box-shadow:
+        0 15px 30px rgba(0,0,0,0.08),
+        0 0 8px rgba(102, 187, 106, 0.15);
+    }
+    header h1 {
+      font-size: 2.2rem;
+    }
+    header p {
+      font-size: 1rem;
+    }
+    #lang-switcher {
+      top: 15px;
+      right: 15px;
+      gap: 8px;
+    }
+    #lang-switcher button {
+      padding: 5px 10px;
+      font-size: 0.85rem;
+    }
+    section h2 {
+      font-size: 1.4rem;
+      padding-left: 10px;
+    }
+    section p, section li {
+      font-size: 0.95rem;
+    }
+    #contact-icons a {
+      width: 30px;
+      height: 30px;
+    }
+  }
 </style>
 </head>
 <body>
   <main>
-    <div id="lang-switcher">
+    <div id="lang-switcher" role="navigation" aria-label="Language Switcher">
       <button data-lang="en" class="active" aria-label="English">EN</button>
       <button data-lang="fi" aria-label="Finnish">FI</button>
       <button data-lang="ru" aria-label="Russian">RU</button>
@@ -200,7 +270,7 @@
       <p>Software Engineer → Future ML Engineer | Aviation + AI</p>
     </header>
 
-    <section id="about">
+    <section id="about" tabindex="0">
       <h2>About Me</h2>
       <p>
         I'm a software engineer working in the aerospace industry, developing engineering tools and predictive ML prototypes to support complex workflows.
@@ -208,7 +278,7 @@
       </p>
     </section>
 
-    <section id="skills">
+    <section id="skills" tabindex="0">
       <h2>Skills</h2>
       <ul>
         <li><strong>Languages:</strong> Python, C++, SQL, MATLAB</li>
@@ -218,7 +288,7 @@
       </ul>
     </section>
 
-    <section id="projects">
+    <section id="projects" tabindex="0">
       <h2>Projects</h2>
       <ul>
         <li>
@@ -234,7 +304,7 @@
       </ul>
     </section>
 
-    <section id="career-goals">
+    <section id="career-goals" tabindex="0">
       <h2>Career Goals</h2>
       <p>
         My aim is to become a full-time Machine Learning Engineer in Europe, especially Finland. I’m inspired by the balance of technology and nature,
@@ -249,12 +319,12 @@
       </div>
     </section>
 
-    <section id="resume-section">
+    <section id="resume-section" tabindex="0">
       <h2>Resume</h2>
       <a href="resume.pdf" target="_blank" class="resume-link" aria-label="Download Resume PDF">📄 Download Resume</a>
     </section>
 
-    <section id="contact">
+    <section id="contact" tabindex="0">
       <h2>Contact</h2>
       <div id="contact-icons">
         <a href="https://github.com/Nofflll" target="_blank" aria-label="GitHub">
@@ -381,7 +451,6 @@
   };
 
   function updateContent(lang) {
-    // Update text content of sections
     document.querySelector('#about p').textContent = texts[lang].about;
 
     const skillsList = document.querySelector('#skills ul');
@@ -414,11 +483,32 @@
       if (btn.dataset.lang === currentLang) return;
       currentLang = btn.dataset.lang;
       updateContent(currentLang);
-      // Highlight active button
       document.querySelectorAll('#lang-switcher button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     });
   });
+
+  // Parallax background movement
+  document.addEventListener('mousemove', e => {
+    const amountX = (e.clientX / window.innerWidth - 0.5) * 10;
+    const amountY = (e.clientY / window.innerHeight - 0.5) * 10;
+    document.body.style.setProperty('--parallax-x', amountX + 'px');
+    document.body.style.setProperty('--parallax-y', amountY + 'px');
+    document.body.querySelector('::before'); // Force repaint (optional)
+  });
+
+  // Update ::before transform based on mouse (via CSS variable)
+  // We'll do it in CSS:
+  // body::before { transform: translate(calc(var(--parallax-x, 0) * 1px), calc(var(--parallax-y, 0) * 1px)); }
+
 </script>
+
+<style>
+  body::before {
+    /* update transform with CSS variable */
+    transform: translate(calc(var(--parallax-x, 0px)), calc(var(--parallax-y, 0px)));
+  }
+</style>
+
 </body>
 </html>
