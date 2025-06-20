@@ -1,45 +1,91 @@
+/* Общий стиль */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f3f7f4;
-  color: #2f3e2e;
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.6;
   margin: 0;
   padding: 0 20px;
+  transition: background-color 0.5s, color 0.5s;
 }
 
+/* Цветовые палитры */
+:root {
+  --bg: #f3f7f4;
+  --text: #2f3e2e;
+  --accent: #75c27f;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0,0,0,0.05);
+}
+
+.dark {
+  --bg: #1e1e1e;
+  --text: #e0e0e0;
+  --accent: #4c7d57;
+  --card-bg: #2a2a2a;
+  --card-shadow: rgba(0,0,0,0.2);
+}
+
+/* Ссылки */
 a {
-  color: #3b7d4e;
+  color: var(--accent);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.3s;
 }
-
 a:hover {
-  color: #275c3a;
+  color: darken(var(--accent), 10%);
   text-decoration: underline;
 }
 
+/* Заголовки */
+h1, h2, h3 {
+  text-align: center;
+  color: var(--text);
+}
+
+/* Карточки проектов */
 .project-card {
-  background-color: #ffffff;
-  border-left: 5px solid #75c27f;
+  background-color: var(--card-bg);
+  border-left: 5px solid var(--accent);
   padding: 20px;
   margin: 20px 0;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px var(--card-shadow);
 }
 
-h1, h2, h3 {
-  color: #2e4730;
+/* Анимации появления при загрузке */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
-hr {
-  border: none;
-  height: 1px;
-  background-color: #cddccf;
-  margin: 30px 0;
+/* Контейнер иконок */
+.icon-link img {
+  width: 24px;
+  filter: brightness(0) invert(0);
+  transition: filter 0.3s;
+}
+.dark .icon-link img {
+  filter: brightness(0) invert(1);
+}
+.icon-link img:hover {
+  transform: scale(1.1);
+}
+
+/* Переключатель темы */
+#theme-toggle {
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 32px;
 }
