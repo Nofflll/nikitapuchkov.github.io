@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nikita Puchkov — Resume & Portfolio</title>
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/742/742751.png" type="image/png" />
 <style>
   /* Reset & base */
   * {
@@ -39,8 +38,8 @@
       radial-gradient(circle at 80% 80%, rgba(56,142,60,0.15), transparent 30%);
     pointer-events: none;
     z-index: -1;
-    transform: translate(calc(var(--parallax-x, 0px)), calc(var(--parallax-y, 0px)));
-    transition: transform 0.15s ease-out;
+    transform: translateZ(0);
+    transition: transform 0.1s ease-out;
   }
   main {
     max-width: 720px;
@@ -83,7 +82,7 @@
     padding: 6px 14px;
     border-radius: 24px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, color 0.3s;
     font-size: 0.95rem;
     user-select: none;
   }
@@ -91,11 +90,6 @@
   #lang-switcher button:hover {
     background-color: #2e7d32;
     color: white;
-    box-shadow: 0 4px 10px rgba(46,125,50,0.6);
-  }
-  #lang-switcher button:focus-visible {
-    outline: 3px solid #66bb6a;
-    outline-offset: 2px;
   }
   section {
     margin-bottom: 2.8rem;
@@ -143,11 +137,9 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
   }
-  .btn:hover,
-  .btn:focus-visible {
+  .btn:hover {
     background-color: #388e3c;
     box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
-    outline: none;
   }
   #finland-details {
     margin-top: 1rem;
@@ -155,13 +147,7 @@
     padding-left: 14px;
     color: #2e7d32;
     font-style: italic;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.5s ease;
-  }
-  #finland-details.open {
-    max-height: 300px; /* enough for content */
-    padding-top: 1rem;
+    display: none;
   }
   a.resume-link {
     display: inline-block;
@@ -173,10 +159,8 @@
     transition: border-color 0.3s;
     user-select: none;
   }
-  a.resume-link:hover,
-  a.resume-link:focus-visible {
+  a.resume-link:hover {
     border-color: #66bb6a;
-    outline: none;
   }
   #contact-icons {
     display: flex;
@@ -191,10 +175,8 @@
     filter: brightness(0) saturate(100%) invert(28%) sepia(57%) saturate(458%) hue-rotate(80deg) brightness(98%) contrast(85%);
     transition: filter 0.3s ease;
   }
-  #contact-icons a:hover,
-  #contact-icons a:focus-visible {
+  #contact-icons a:hover {
     filter: brightness(0) saturate(100%) invert(49%) sepia(76%) saturate(446%) hue-rotate(100deg) brightness(104%) contrast(109%);
-    outline: none;
   }
   #contact-icons img {
     width: 100%;
@@ -223,17 +205,10 @@
     cursor: pointer;
     overflow: hidden;
     user-select: none;
-    outline: none;
   }
-  .project-card:hover,
-  .project-card:focus-visible {
+  .project-card:hover {
     box-shadow: 0 10px 20px rgba(56, 142, 60, 0.4);
     transform: translateY(-4px);
-    outline: none;
-  }
-  .project-card:focus-visible {
-    outline: 3px solid #66bb6a;
-    outline-offset: 2px;
   }
   .project-header {
     padding: 1rem 1.5rem;
@@ -241,7 +216,6 @@
     font-size: 1.2rem;
     color: #2e7d32;
     background: #e6f3e8;
-    user-select: none;
   }
   .project-content {
     max-height: 0;
@@ -280,33 +254,15 @@
     align-items: center;
     gap: 0.4rem;
   }
-  .btn-link:hover,
-  .btn-link:focus-visible {
+  .btn-link:hover {
     background: #388e3c;
     box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
-    outline: none;
   }
   .btn-link svg {
     width: 18px;
     height: 18px;
     fill: white;
   }
-  /* Button with arrow for Finland */
-  #toggle-finland-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  #toggle-finland-btn::after {
-    content: "▼";
-    display: inline-block;
-    transition: transform 0.3s ease;
-    font-size: 0.85rem;
-  }
-  #toggle-finland-btn[aria-expanded="true"]::after {
-    transform: rotate(180deg);
-  }
-
   /* Responsive */
   @media (max-width: 768px) {
     main {
@@ -347,11 +303,11 @@
 </head>
 <body>
   <main>
-    <nav id="lang-switcher" role="navigation" aria-label="Language Switcher">
-      <button data-lang="en" class="active" aria-label="English" aria-pressed="true" type="button">EN</button>
-      <button data-lang="fi" aria-label="Finnish" aria-pressed="false" type="button">FI</button>
-      <button data-lang="ru" aria-label="Russian" aria-pressed="false" type="button">RU</button>
-    </nav>
+    <div id="lang-switcher" role="navigation" aria-label="Language Switcher">
+      <button data-lang="en" class="active" aria-label="English">EN</button>
+      <button data-lang="fi" aria-label="Finnish">FI</button>
+      <button data-lang="ru" aria-label="Russian">RU</button>
+    </div>
 
     <header>
       <h1>🌿 Nikita Puchkov</h1>
@@ -376,7 +332,7 @@
     <section id="career-goals" tabindex="0">
       <h2>Career Goals</h2>
       <p></p>
-      <button class="btn" id="toggle-finland-btn" aria-expanded="false" aria-controls="finland-details" type="button">Why Finland?</button>
+      <button class="btn" id="toggle-finland-btn" aria-expanded="false" aria-controls="finland-details">Why Finland?</button>
       <div id="finland-details" aria-hidden="true">
         <p></p>
       </div>
@@ -384,19 +340,19 @@
 
     <section id="resume-section" tabindex="0">
       <h2>Resume</h2>
-      <a href="resume.pdf" target="_blank" class="resume-link" aria-label="Download Resume PDF" rel="noopener noreferrer">📄 Download Resume</a>
+      <a href="resume.pdf" target="_blank" class="resume-link" aria-label="Download Resume PDF">📄 Download Resume</a>
     </section>
 
     <section id="contact" tabindex="0">
       <h2>Contact</h2>
       <div id="contact-icons">
-        <a href="https://github.com/Nofflll" target="_blank" aria-label="GitHub" rel="noopener noreferrer">
+        <a href="https://github.com/Nofflll" target="_blank" aria-label="GitHub">
           <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub icon" />
         </a>
         <a href="mailto:your.email@example.com" aria-label="Email">
           <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email icon" />
         </a>
-        <a href="https://linkedin.com/in/nikitapuchkov" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer">
+        <a href="https://linkedin.com/in/nikitapuchkov" target="_blank" aria-label="LinkedIn">
           <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn icon" />
         </a>
       </div>
@@ -498,12 +454,6 @@
 
   function updateContent(lang) {
     currentLang = lang;
-
-    // Update aria-pressed on lang buttons
-    document.querySelectorAll("#lang-switcher button").forEach(btn => {
-      btn.setAttribute("aria-pressed", btn.dataset.lang === lang ? "true" : "false");
-    });
-
     document.querySelector("#about p").textContent = texts[lang].about;
 
     const skillsUl = document.querySelector("#skills ul");
@@ -531,10 +481,10 @@
           <p>${proj.text}</p>
           <div class="tech-list"><strong>Technologies:</strong> ${proj.tech.join(", ")}</div>
           <div class="btn-group">
-            ${proj.github ? `<a href="${proj.github}" target="_blank" class="btn-link" aria-label="GitHub repository for ${proj.title}" rel="noopener noreferrer">GitHub
+            ${proj.github ? `<a href="${proj.github}" target="_blank" class="btn-link" aria-label="GitHub repository for ${proj.title}">GitHub
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0.297C5.37 0.297 0 5.67 0 12.3c0 5.29 3.438 9.77 8.205 11.36.6.11.82-.25.82-.56 0-.28-.01-1.02-.015-2-3.338.724-4.042-1.61-4.042-1.61-.547-1.387-1.335-1.76-1.335-1.76-1.09-.745.084-.73.084-.73 1.205.085 1.838 1.23 1.838 1.23 1.07 1.83 2.81 1.3 3.495.993.11-.776.42-1.3.76-1.6-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.47-2.38 1.235-3.22-.123-.3-.535-1.515.117-3.16 0 0 1.005-.32 3.3 1.23a11.47 11.47 0 013.003-.4c1.02.005 2.045.135 3.003.4 2.28-1.55 3.285-1.23 3.285-1.23.655 1.645.243 2.86.12 3.16.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.92.43.37.82 1.1.82 2.22 0 1.6-.015 2.88-.015 3.28 0 .31.21.68.825.56C20.565 22.065 24 17.585 24 12.3c0-6.63-5.37-12.003-12-12.003z"></path></svg>
             </a>` : ""}
-            ${proj.demo ? `<a href="${proj.demo}" target="_blank" class="btn-link" aria-label="Live demo for ${proj.title}" rel="noopener noreferrer">Demo</a>` : ""}
+            ${proj.demo ? `<a href="${proj.demo}" target="_blank" class="btn-link" aria-label="Live demo for ${proj.title}">Demo</a>` : ""}
           </div>
         </div>
       `;
@@ -558,7 +508,6 @@
     const finlandDetails = document.getElementById("finland-details");
     finlandDetails.style.display = "none";
     document.getElementById("toggle-finland-btn").setAttribute("aria-expanded", "false");
-    finlandDetails.setAttribute("aria-hidden", "true");
   }
 
   function toggleProject(card) {
@@ -593,12 +542,8 @@
   document.querySelectorAll("#lang-switcher button").forEach(btn => {
     btn.addEventListener("click", () => {
       if (btn.classList.contains("active")) return;
-      document.querySelectorAll("#lang-switcher button").forEach(b => {
-        b.classList.remove("active");
-        b.setAttribute("aria-pressed", "false");
-      });
+      document.querySelectorAll("#lang-switcher button").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-      btn.setAttribute("aria-pressed", "true");
       updateContent(btn.dataset.lang);
     });
   });
@@ -628,5 +573,24 @@
   window.addEventListener("scroll", revealSections);
   revealSections();
 </script>
+
+<style>
+  body::before {
+    content: "";
+    position: fixed;
+    top: -10vh;
+    left: -10vw;
+    width: 120vw;
+    height: 120vh;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(102,187,106,0.15), transparent 30%),
+      radial-gradient(circle at 80% 80%, rgba(56,142,60,0.15), transparent 30%);
+    pointer-events: none;
+    z-index: -1;
+    transform: translate(calc(var(--parallax-x, 0px)), calc(var(--parallax-y, 0px)));
+    transition: transform 0.1s ease-out;
+  }
+</style>
+
 </body>
 </html>
