@@ -1,86 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nikita Puchkov — Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css">
-  <script defer src="assets/main.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nikita Puchkov — Resume & Portfolio</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: linear-gradient(135deg, #e0f2f1, #fafafa);
+    color: #222;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+  main {
+    max-width: 720px;
+    width: 100%;
+    background: #fff;
+    padding: 2.6rem 3rem 3rem;
+    border-radius: 14px;
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.1),
+      0 0 10px rgba(102, 187, 106, 0.2);
+    position: relative;
+  }
 
-  <!-- Multilanguage -->
-  <script type="application/json" id="lang-en">{
-    "about":"I'm a software engineer in aerospace... transitioning to ML.",
-    "mlHeading":"🧠 ML Transition",
-    "mlList":["Self‑studying ML (theory, PyTorch, datasets)","Building a personal AI assistant","Learning Finnish (A2)","Engineering mindset + data‑driven systems"],
-    "projectsHeading":"🚀 Projects",
-    "proj1Title":"AI Assistant for Aerospace Engineers",
-    "proj1Text":"ML‑powered assistant predicting aerodynamic parameters based on historical data.",
-    "proj2Title":"Personal AI Assistant",
-    "proj2Text":"Smart assistant to automate tasks, routines, and device control.",
-    "careerHeading":"🎯 Career Goals",
-    "careerText":"Aiming for ML Engineer roles in Europe, especially Finland, where I embrace technology, nature, and design harmony.",
-    "resumeHeading":"📄 Resume",
-    "resumeButton":"📄 Download Resume",
-    "resumeSummary":"Software Engineer (1+ year) → ML‑focused; aviation tools, predictive systems, microservices.",
-    "contactHeading":"📬 Contact",
-    "footer":"Made with ❤️ for code, clarity & the future of AI"
-  }</script>
-  <script type="application/json" id="lang-ru">{
-    "about":"Я инженер‑программист в авиационной отрасли... в процессе перехода в ML.",
-    "mlHeading":"🧠 Переход в ML",
-    "mlList":["Самообразование в ML (теория, PyTorch, датасеты)","Создание личного AI‑ассистента","Изучаю финский язык (A2)","Инженерное мышление + системы на основе данных"],
-    "projectsHeading":"🚀 Проекты",
-    "proj1Title":"ИИ‑ассистент для авиационных инженеров",
-    "proj1Text":"ML‑ассистент, предсказывающий аэродинамические параметры на основе данных.",
-    "proj2Title":"Персональный AI‑ассистент",
-    "proj2Text":"Умный ассистент: автоматизация задач, расписаний и управления устройствами.",
-    "careerHeading":"🎯 Цели в карьере",
-    "careerText":"Устройся ML‑инженером в Европе, особенно в Финляндии, где ценятся технологии, природа и дизайн.",
-    "resumeHeading":"📄 Резюме",
-    "resumeButton":"📄 Скачать резюме",
-    "resumeSummary":"Софт‑инженер (1+ год) с фокусом на ML; авиационные инструменты, предсказания, микросервисы.",
-    "contactHeading":"📬 Контакты",
-    "footer":"Сделано с ❤️ для кода, ясности и будущего AI"
-  }</script>
-  <script type="application/json" id="lang-fi">{
-    "about":"Olen ohjelmistoinsinööri ilmailualalla... siirtymässä koneoppimisen pariin.",
-    "mlHeading":"🧠 Siirtymä ML:ään",
-    "mlList":["Itseopiskelu ML:ää (teoria, PyTorch, datasetit)","Rakennan henkilökohtaista AI‑avustajaa","Opiskelen suomea (A2)","Insinööriajattelu + dataohjatut järjestelmät"],
-    "projectsHeading":"🚀 Projektit",
-    "proj1Title":"AI‑avustaja ilmailuinsinööreille",
-    "proj1Text":"ML‑avustaja ennustaa aerodynamiikan parametreja historiallisten tietojen perusteella.",
-    "proj2Title":"Henkilökohtainen AI‑avustaja",
-    "proj2Text":"Älykäs avustaja automatisoi tehtäviä, rutiineja ja laitteiden hallintaa.",
-    "careerHeading":"🎯 Uratavoitteet",
-    "careerText":"Pyydän ML‑insinöörin tehtävää Euroopassa, erityisesti Suomessa, jossa teknologia, luonto ja muotoilu ovat tärkeitä.",
-    "resumeHeading":"📄 CV",
-    "resumeButton":"📄 Lataa CV",
-    "resumeSummary":"Ohjelmisto‑insinööri (1+ v) → ML‑suunta; ilmailutyökalut, ennusteet, mikropalvelut.",
-    "contactHeading":"📬 Ota yhteyttä",
-    "footer":"Tehty ❤️ koodiin, selkeyteen ja AI‑tulevaisuuteen"
-  }</script>
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 2.8rem;
+    color: #2e7d32;
+  }
+  header p {
+    margin-top: 0.2rem;
+    font-size: 1.1rem;
+    color: #4a4a4a;
+  }
+
+  /* Language Switcher */
+  #lang-switcher {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 12px;
+  }
+  #lang-switcher button {
+    background: transparent;
+    border: 2px solid #2e7d32;
+    color: #2e7d32;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.95rem;
+  }
+  #lang-switcher button.active,
+  #lang-switcher button:hover {
+    background-color: #2e7d32;
+    color: white;
+  }
+
+  /* Section styles */
+  section {
+    margin-bottom: 2.8rem;
+    opacity: 0;
+    transform: translateY(25px);
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-duration: 0.8s;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  section h2 {
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    border-left: 5px solid #66bb6a;
+    padding-left: 12px;
+    color: #2e7d32;
+  }
+  section p, section li {
+    font-size: 1rem;
+    color: #333;
+  }
+  section ul {
+    padding-left: 1.25rem;
+    margin-top: 0.6rem;
+    list-style-type: disc;
+  }
+  section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Button */
+  .btn {
+    background-color: #66bb6a;
+    color: white;
+    border: none;
+    padding: 0.55rem 1.25rem;
+    border-radius: 28px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 9px rgba(102, 187, 106, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  .btn:hover {
+    background-color: #388e3c;
+    box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
+  }
+
+  /* Finland details */
+  #finland-details {
+    margin-top: 1rem;
+    border-left: 4px solid #a5d6a7;
+    padding-left: 14px;
+    color: #2e7d32;
+    font-style: italic;
+    display: none;
+  }
+
+  /* Resume Link */
+  a.resume-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #2e7d32;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  a.resume-link:hover {
+    border-color: #66bb6a;
+  }
+
+  /* Contact icons */
+  #contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2.2rem;
+    margin-top: 1rem;
+  }
+  #contact-icons a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    filter: brightness(0) saturate(100%) invert(28%) sepia(57%) saturate(458%) hue-rotate(80deg) brightness(98%) contrast(85%);
+    transition: filter 0.3s ease;
+  }
+  #contact-icons a:hover {
+    filter: brightness(0) saturate(100%) invert(49%) sepia(76%) saturate(446%) hue-rotate(100deg) brightness(104%) contrast(109%);
+  }
+  #contact-icons img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    user-select: none;
+  }
+</style>
 </head>
 <body>
-  <div class="toolbar">
-    <button id="theme-toggle">🌙</button>
-    <div class="lang-switch">
-      <button onclick="setLang('en')">EN</button>
-      <button onclick="setLang('ru')">RU</button>
-      <button onclick="setLang('fi')">FI</button>
-    </div>
-  </div>
-
   <main>
-    <h1>🌿 Nikita Puchkov</h1>
-    <p class="subtitle">Software Engineer → Future ML Engineer | Aviation + AI</p>
+    <div id="lang-switcher">
+      <button data-lang="en" class="active" aria-label="English">EN</button>
+      <button data-lang="fi" aria-label="Finnish">FI</button>
+      <button data-lang="ru" aria-label="Russian">RU</button>
+    </div>
 
-    <section id="about"></section>
-    <section id="ml-transition"></section>
-    <section id="projects"></section>
-    <section id="career"></section>
-    <section id="resume"></section>
-    <section id="contact"></section>
-    <footer></footer>
+    <header>
+      <h1>🌿 Nikita Puchkov</h1>
+      <p>Software Engineer → Future ML Engineer | Aviation + AI</p>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm a software engineer working in the aerospace industry, developing engineering tools and predictive ML prototypes to support complex workflows.
+        Currently transitioning into machine learning with active self-study, building AI assistants, and learning Finnish for future relocation.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Languages:</strong> Python, C++, SQL, MATLAB</li>
+        <li><strong>Frameworks:</strong> PyTorch, FastAPI, Flask, Pandas, NumPy</li>
+        <li><strong>Tools:</strong> Docker, Git, Linux, SQLite, Bash</li>
+        <li><strong>Topics:</strong> Data preprocessing, API development, GUI design, ML prototyping</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <strong>AI Assistant for Aerospace Engineers</strong><br />
+          ML-powered assistant predicting aerodynamic parameters from historical data. Accelerates engineering decision-making in aviation.<br />
+          <em>Technologies:</em> Python, NumPy, SQLite, Flask
+        </li>
+        <li>
+          <strong>Personal AI Assistant</strong><br />
+          In development: Smart assistant to automate daily tasks and device control.<br />
+          <em>Technologies:</em> Python, LLM APIs, Voice IO, Linux
+        </li>
+      </ul>
+    </section>
+
+    <section id="career-goals">
+      <h2>Career Goals</h2>
+      <p>
+        My aim is to become a full-time Machine Learning Engineer in Europe, especially Finland. I’m inspired by the balance of technology and nature,
+        clean design, and ethical AI development prevalent in Finnish culture.
+      </p>
+      <button class="btn" id="toggle-finland-btn" aria-expanded="false" aria-controls="finland-details">Why Finland?</button>
+      <div id="finland-details" aria-hidden="true">
+        <p>
+          Finland represents the ideal environment for my professional growth — combining a cutting-edge tech ecosystem with a deep respect for nature and privacy.
+          I’m actively learning Finnish (A2) and preparing to integrate smoothly into the local culture and engineering community.
+        </p>
+      </div>
+    </section>
+
+    <section id="resume-section">
+      <h2>Resume</h2>
+      <a href="resume.pdf" target="_blank" class="resume-link" aria-label="Download Resume PDF">📄 Download Resume</a>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div id="contact-icons">
+        <a href="https://github.com/Nofflll" target="_blank" aria-label="GitHub">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo" />
+        </a>
+        <a href="https://linkedin.com/in/nikitapuchkov" target="_blank" aria-label="LinkedIn">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" />
+        </a>
+        <a href="mailto:your_email@example.com" aria-label="Email">
+          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email Icon" />
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      Made with ❤️ for code, clarity & the future of AI
+    </footer>
   </main>
+
+<script>
+  // Animate sections on scroll
+  const sections = document.querySelectorAll('section');
+  const options = {
+    threshold: 0.2
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, options);
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Finland toggle
+  const finlandBtn = document.getElementById('toggle-finland-btn');
+  const finlandDetails = document.getElementById('finland-details');
+  finlandBtn.addEventListener('click', () => {
+    const expanded = finlandBtn.getAttribute('aria-expanded') === 'true';
+    finlandBtn.setAttribute('aria-expanded', !expanded);
+    if (finlandDetails.style.display === 'block') {
+      finlandDetails.style.display = 'none';
+      finlandDetails.setAttribute('aria-hidden', 'true');
+    } else {
+      finlandDetails.style.display = 'block';
+      finlandDetails.setAttribute('aria-hidden', 'false');
+    }
+  });
+
+  // Language Switcher (basic)
+  const langSwitcher = document.getElementById('lang-switcher');
+  const texts = {
+    en: {
+      about: "I'm a software engineer working in the aerospace industry, developing engineering tools and predictive ML prototypes to support complex workflows. Currently transitioning into machine learning with active self-study, building AI assistants, and learning Finnish for future relocation.",
+      skills: [
+        "Languages: Python, C++, SQL, MATLAB",
+        "Frameworks: PyTorch, FastAPI, Flask, Pandas, NumPy",
+        "Tools: Docker, Git, Linux, SQLite, Bash",
+        "Topics: Data preprocessing, API development, GUI design, ML prototyping"
+      ],
+      projects: [
+        {
+          title: "AI Assistant for Aerospace Engineers",
+          text: "ML-powered assistant predicting aerodynamic parameters from historical data. Accelerates engineering decision-making in aviation.",
+          tech: "Python, NumPy, SQLite, Flask"
+        },
+        {
+          title: "Personal AI Assistant",
+          text: "In development: Smart assistant to automate daily tasks and device control.",
+          tech: "Python, LLM APIs, Voice IO, Linux"
+        }
+      ],
+      career: "My aim is to become a full-time Machine Learning Engineer in Europe, especially Finland. I’m inspired by the balance of technology and nature, clean design, and ethical AI development prevalent in Finnish culture.",
+      finlandDetails: "Finland represents the ideal environment for my professional growth — combining a cutting-edge tech ecosystem with a deep respect for nature and privacy. I’m actively learning Finnish (A2) and preparing to integrate smoothly into the local culture and engineering community."
+    },
+    fi: {
+      about: "Olen ohjelmistoinsinööri ilmailualalla, kehittäen insinööri- ja ML-työkaluja monimutkaisten työnkulkujen tueksi. Olen siirtymässä koneoppimiseen, opiskellen aktiivisesti, rakentaen AI-avustajia ja oppien suomea tulevaa muuttoa varten.",
+      skills: [
+        "Kielet: Python, C++, SQL, MATLAB",
+        "Kehykset: PyTorch, FastAPI, Flask, Pandas, NumPy",
+        "Työkalut: Docker, Git, Linux, SQLite, Bash",
+        "Aiheet: Datan esikäsittely, API-kehitys, GUI-suunnittelu, ML-prototyyppien teko"
+      ],
+      projects: [
+        {
+          title: "AI-avustaja ilmailuinsinööreille",
+          text: "ML-avustaja, joka ennustaa aerodynaamisia parametreja historiallisten tietojen perusteella. Nopeuttaa päätöksentekoa ilmailualalla.",
+          tech: "Python, NumPy, SQLite, Flask"
+        },
+        {
+          title: "Henkilökohtainen AI-avustaja",
+          text: "Kehitteillä: älykäs avustaja päivittäisten tehtävien ja laitteiden hallintaan.",
+          tech: "Python, LLM API:t, Puhe IO, Linux"
+        }
+      ],
+      career: "Tavoitteeni on tulla kokoaikaiseksi koneoppimisinsinööriksi Euroopassa, erityisesti Suomessa. Olen inspiroitunut teknologian ja luonnon tasapainosta, puhtaasta designista ja eettisestä AI-kehityksestä, joka on yleistä suomalaisessa kulttuurissa.",
+      finlandDetails: "Suomi tarjoaa ihanteellisen ympäristön ammatilliselle kasvulleni yhdistäen huipputeknologian ekosysteemin ja syvän kunnioituksen luontoa ja yksityisyyttä kohtaan. Opiskelen aktiivisesti suomea (A2) ja valmistaudun integroitumaan paikalliseen kulttuuriin ja insinööriyhteisöön."
+    },
+    ru: {
+      about: "Я инженер‑программист в авиационной отрасли, разрабатывающий инженерные инструменты и прототипы ML для поддержки сложных процессов. Сейчас я в процессе перехода в машинное обучение, активно учусь, создаю AI‑ассистентов и учу финский для будущего переезда.",
+      skills: [
+        "Языки: Python, C++, SQL, MATLAB",
+        "Фреймворки: PyTorch, FastAPI, Flask, Pandas, NumPy",
+        "Инструменты: Docker, Git, Linux, SQLite, Bash",
+        "Темы: Предобработка данных, разработка API, дизайн GUI, прототипирование ML"
+      ],
+      projects: [
+        {
+          title: "ИИ-ассистент для авиационных инженеров",
+          text: "ML-ассистент, предсказывающий аэродинамические параметры на основе исторических данных. Ускоряет принятие решений в авиации.",
+          tech: "Python, NumPy, SQLite, Flask"
+        },
+        {
+          title: "Персональный AI-ассистент",
+          text: "В разработке: умный ассистент для автоматизации задач и управления устройствами.",
+          tech: "Python, LLM API, голосовой ввод/вывод, Linux"
+        }
+      ],
+      career: "Моя цель — стать ML-инженером в Европе, особенно в Финляндии. Меня вдохновляет баланс технологий и природы, чистый дизайн и этичная разработка AI, характерные для финской культуры.",
+      finlandDetails: "Финляндия — идеальная среда для моего профессионального роста, объединяющая передовую технологическую экосистему и глубокое уважение к природе и приватности. Я активно учу финский (уровень A2) и готовлюсь к интеграции в местную культуру и инженерное сообщество."
+    }
+  };
+
+  function updateContent(lang) {
+    // Update text content of sections
+    document.querySelector('#about p').textContent = texts[lang].about;
+
+    const skillsList = document.querySelector('#skills ul');
+    skillsList.innerHTML = '';
+    texts[lang].skills.forEach(skill => {
+      const li = document.createElement('li');
+      li.textContent = skill;
+      skillsList.appendChild(li);
+    });
+
+    const projectsList = document.querySelector('#projects ul');
+    projectsList.innerHTML = '';
+    texts[lang].projects.forEach(proj => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${proj.title}</strong><br>${proj.text}<br><em>Technologies: ${proj.tech}</em>`;
+      projectsList.appendChild(li);
+    });
+
+    document.querySelector('#career-goals p').textContent = texts[lang].career;
+    document.querySelector('#finland-details p').textContent = texts[lang].finlandDetails;
+  }
+
+  // Init default language
+  let currentLang = 'en';
+  updateContent(currentLang);
+
+  // Language switch buttons
+  document.querySelectorAll('#lang-switcher button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.lang === currentLang) return;
+      currentLang = btn.dataset.lang;
+      updateContent(currentLang);
+      // Highlight active button
+      document.querySelectorAll('#lang-switcher button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
