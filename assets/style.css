@@ -1,4 +1,3 @@
-/* === Цветовые переменные === */
 :root {
   --bg: #f3f7f4;
   --text: #2f3e2e;
@@ -9,7 +8,6 @@
   --link: #3b7d4e;
   --link-hover: #2f5c3c;
 }
-
 .dark {
   --bg: #1e1e1e;
   --text: #e0e0e0;
@@ -20,8 +18,6 @@
   --link: #b3ffcc;
   --link-hover: #8ae6a6;
 }
-
-/* === Базовая стилизация === */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--bg);
@@ -29,43 +25,27 @@ body {
   margin: 0;
   padding: 0;
   transition: background-color 0.6s ease, color 0.6s ease;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 main {
   max-width: 850px;
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
 }
-
-/* === Заголовки и текст === */
 h1, h2, h3 {
   color: var(--text);
   text-align: center;
-  margin-top: 1.2em;
 }
-
-p {
-  margin: 1em 0;
-  line-height: 1.6;
-}
-
-/* === Ссылки === */
+p { margin: 1em 0; line-height: 1.6; }
 a {
   color: var(--link);
   text-decoration: none;
   transition: color 0.3s ease;
 }
-a:hover {
-  color: var(--link-hover);
-  text-decoration: underline;
-}
-
-/* === Карточки проектов === */
+a:hover { color: var(--link-hover); text-decoration: underline; }
 .project-card {
   background-color: var(--card-bg);
   border-left: 5px solid var(--accent);
@@ -79,21 +59,14 @@ a:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px var(--shadow);
 }
-
-/* === Анимация появления (fade-in) === */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards;
 }
 @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-/* === Иконки соцсетей === */
 .icon-link img {
   width: 28px;
   margin: 0 10px;
@@ -103,11 +76,7 @@ a:hover {
 .dark .icon-link img {
   filter: brightness(0) invert(1);
 }
-.icon-link img:hover {
-  transform: scale(1.2);
-}
-
-/* === Переключатель темы === */
+.icon-link img:hover { transform: scale(1.2); }
 #theme-toggle {
   cursor: pointer;
   position: fixed;
@@ -117,27 +86,7 @@ a:hover {
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
-#theme-toggle:hover {
-  opacity: 1;
-}
-
-/* === Кнопки === */
-.button {
-  display: inline-block;
-  padding: 0.5em 1em;
-  border: none;
-  background-color: var(--accent);
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-.button:hover {
-  background-color: var(--accent-dark);
-}
-
-/* === Подвал === */
+#theme-toggle:hover { opacity: 1; }
 footer {
   text-align: center;
   margin-top: 3rem;
