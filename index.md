@@ -1,67 +1,58 @@
 ---
 layout: default
-title: Nikita Puchkov — Portfolio
+title: Nikita Puchkov – Portfolio
 ---
 
-<style>
-h1, h2 {
-  text-align: center;
-}
-.project-card {
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-</style>
+<link rel="stylesheet" href="assets/style.css">
 
-# 👨‍💻 Nikita Puchkov
-**Software Engineer | ML Enthusiast | Python Developer**
+# 🌿 Nikita Puchkov
 
-Welcome! I'm a software engineer with a background in aviation and a passion for building intelligent systems. I specialize in Python development, mathematical modeling, and AI assistant tools.
+**Software Engineer | Future ML Engineer | Python + AI + Aviation**
+
+Welcome to my personal portfolio — built with clean code and natural clarity.  
+I love creating intelligent tools that simplify life and support engineers in complex systems.
 
 ---
 
-## 🧠 About Me
+## 🌱 About Me
 
-I'm currently working as a software engineer in the aviation industry, developing computational tools and mathematical models for aircraft analysis.  
-My goal is to transition into **machine learning engineering**, and I'm actively building real-world AI tools, learning modern ML frameworks, and improving my skills every day.
+I’m an aviation software engineer with strong math background, building AI tools to assist with engineering and life itself.
+
+Currently learning ML, developing smart assistants, and exploring neural interfaces, ethical AI, and nature-inspired design.
 
 ---
 
-## 🚀 Projects
+## 🌾 Projects
 
 <div class="project-card">
 <h3>🧠 AI Assistant for Engineers</h3>
-<p>Conversational assistant for daily technical routines using Python, OpenAI API, and SQLite.</p>
-<p><strong>Tech:</strong> Python, Flask, GPT API, SQL</p>
+<p>Conversational tool using OpenAI to support engineers with documents, calculations, and context-aware help.</p>
+<p><strong>Tech:</strong> Python, Flask, GPT API, SQLite</p>
 </div>
 
 <div class="project-card">
 <h3>✈️ Canard Wing Calculator</h3>
-<p>GUI-based aerodynamic calculator for aircraft with "canard" configurations.</p>
-<p><strong>Tech:</strong> Python, PyQt5, Matplotlib</p>
+<p>GUI for calculating aerodynamic properties of canard aircraft configurations.</p>
+<p><strong>Tech:</strong> PyQt5, NumPy, Matplotlib</p>
 </div>
 
 ---
 
-## ⚙️ Skills
+## 🍃 Skills
 
 - **Languages:** Python, C++, SQL, MATLAB  
-- **Frameworks:** PyTorch, FastAPI, Flask, Pandas, NumPy  
-- **Tools:** Docker, Git, Linux/MacOS, Bash, SQLite, PostgreSQL  
-- **Other:** Data Preprocessing, AI Assistant Logic, Team Collaboration  
+- **Frameworks:** PyTorch, FastAPI, Flask, NumPy, Pandas  
+- **Tools:** Docker, Git, Linux, Bash  
+- **Topics:** ML basics, data preprocessing, API development, GUI tools  
 
 ---
 
 ## 🌍 Contact
 
-- 📂 GitHub: [github.com/Nofflll](https://github.com/Nofflll)  
-- 💼 LinkedIn: [linkedin.com/in/nikitapuchkov](https://linkedin.com/in/nikitapuchkov)  
-- 📧 Email: your_email@example.com
+- 🌐 GitHub: [Nofflll](https://github.com/Nofflll)  
+- 🧭 LinkedIn: [linkedin.com/in/nikitapuchkov](#)  
+- ✉️ Email: your_email@example.com
 
 ---
 
-<div align="center">
-  <sub>Made with ❤️ in Python & Markdown</sub>
-</div>
+<div align="center"><sub>Nature meets code – built with ❤️ and Markdown</sub></div>
