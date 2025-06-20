@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nikita Puchkov – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <img id="theme-toggle" src="assets/icons/sun-moon.svg" alt="Toggle theme">
+
+  <main>
+    <div class="fade-in">
+      <h1>🌿 Nikita Puchkov</h1>
+      <p><strong>Software Engineer</strong> | Future ML Engineer | Python + AI + Aviation</p>
+    </div>
+
+    <div class="fade-in" style="animation-delay: 0.2s">
+      <p>Welcome to my natural-code portfolio — built with clean design, smooth interactions, and soft aesthetics.</p>
+    </div>
+
+    <hr>
+
+    <section class="fade-in" style="animation-delay: 0.4s">
+      <h2>🌱 About Me</h2>
+      <p>I’m an aviation software engineer with strong mathematical foundations. I build AI assistant tools and computational models. Currently transitioning into ML, exploring nature-inspired algorithms and intuitive UIs.</p>
+    </section>
+
+    <hr>
+
+    <section class="fade-in" style="animation-delay: 0.6s">
+      <h2>🚀 Projects</h2>
+
+      <div class="project-card">
+        <h3>🧠 AI Assistant for Engineers</h3>
+        <p>Conversational tool using the OpenAI API to support engineers with documents and calculations.</p>
+        <p><strong>Tech:</strong> Python, Flask, GPT API, SQLite</p>
+      </div>
+
+      <div class="project-card">
+        <h3>✈️ Canard Wing Calculator</h3>
+        <p>GUI tool for calculating aerodynamic properties of canard aircraft configurations.</p>
+        <p><strong>Tech:</strong> PyQt5, NumPy, Matplotlib</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section class="fade-in" style="animation-delay: 0.8s">
+      <h2>🍃 Skills</h2>
+      <ul>
+        <li><strong>Languages:</strong> Python, C++, SQL, MATLAB</li>
+        <li><strong>Frameworks:</strong> PyTorch, FastAPI, Flask, Pandas, NumPy</li>
+        <li><strong>Tools:</strong> Docker, Git, Linux, Bash</li>
+        <li><strong>Topics:</strong> Data preprocessing, API development, GUI design</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section class="fade-in" style="animation-delay: 1s">
+      <h2>📄 Resume & Contact</h2>
+      <a href="resume.pdf" class="button" target="_blank">📄 Download Resume</a>
+      <div style="margin-top: 1rem;">
+        <span class="icon-link"><a href="https://github.com/Nofflll" target="_blank"><img src="assets/icons/github.svg" alt="GitHub"></a></span>
+        <span class="icon-link"><a href="https://linkedin.com/in/nikitapuchkov" target="_blank"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a></span>
+        <span class="icon-link"><a href="mailto:your_email@example.com"><img src="assets/icons/email.svg" alt="Email"></a></span>
+      </div>
+    </section>
+
+    <footer class="fade-in" style="animation-delay: 1.2s">
+      <p><sub>Nature meets code – built with ❤️ and soft ✨</sub></p>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('theme-toggle');
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+      });
+    });
+  </script>
+</body>
+</html>
