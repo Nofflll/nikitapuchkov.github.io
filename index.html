@@ -4,81 +4,136 @@
   <meta charset="UTF-8">
   <title>Nikita Puchkov – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="assets/style.css">
+
+  <!-- Переводы -->
+  <script type="application/json" id="lang-en">
+  {
+    "title": "🌿 Nikita Puchkov",
+    "subtitle": "Software Engineer | Future ML Engineer | Python + AI + Aviation",
+    "intro": "Welcome to my natural‑code portfolio — built with clean design, smooth interactions, and soft aesthetics.",
+    "about_heading": "🌱 About Me",
+    "about_text": "I’m an aviation software engineer with strong mathematical foundations. I build AI assistant tools and computational models. Currently transitioning into ML, exploring nature‑inspired algorithms and intuitive UIs.",
+    "projects_heading": "🚀 Projects",
+    "proj1_title": "🧠 AI Assistant for Engineers",
+    "proj1_text": "Conversational tool using the OpenAI API to support engineers with documents and calculations.",
+    "proj2_title": "✈️ Canard Wing Calculator",
+    "proj2_text": "GUI tool for calculating aerodynamic properties of canard aircraft configurations.",
+    "skills_heading": "🍃 Skills",
+    "resume_heading": "📄 Resume & Contact",
+    "resume_button": "📄 Download Resume",
+    "resume_summary_title": "👨‍💻 Professional Summary",
+    "resume_summary": "Software Engineer in aviation transitioning into ML engineering. Experienced in Python, C++, SQL, PyTorch, FastAPI, Flask, Docker.",
+    "experience_title": "💼 Experience",
+    "experience_item": "Software Engineer, Aerospace Company (2023–present): developing mathematical models & apps for aerodynamic analysis.",
+    "education_title": "🎓 Education",
+    "education_item": "BSc in Computer Science, MAI (2019–2023)",
+    "languages_title": "🌍 Languages",
+    "languages_text": "Russian (native), English (B2), learning Finnish",
+    "footer": "Nature meets code – built with ❤️ and soft ✨"
+  }
+  </script>
+  <!-- Здесь позже можно добавить lang-ru и lang-fi JSON -->
 </head>
 <body>
   <img id="theme-toggle" src="assets/icons/sun-moon.svg" alt="Toggle theme">
 
+  <div class="lang-select">
+    <button onclick="setLanguage('en')">EN</button>
+    <button onclick="setLanguage('ru')">RU</button>
+    <button onclick="setLanguage('fi')">FI</button>
+  </div>
+
   <main>
-    <div class="fade-in">
-      <h1>🌿 Nikita Puchkov</h1>
-      <p><strong>Software Engineer</strong> | Future ML Engineer | Python + AI + Aviation</p>
-    </div>
-
-    <div class="fade-in" style="animation-delay: 0.2s">
-      <p>Welcome to my natural-code portfolio — built with clean design, smooth interactions, and soft aesthetics.</p>
-    </div>
-
+    <div class="fade-in" data-i18n="title" style="--delay:0s"><h1></h1></div>
+    <div class="fade-in" data-i18n="subtitle" style="--delay:0.2s"><p></p></div>
+    <div class="fade-in" data-i18n="intro" style="--delay:0.4s"><p></p></div>
     <hr>
 
-    <section class="fade-in" style="animation-delay: 0.4s">
-      <h2>🌱 About Me</h2>
-      <p>I’m an aviation software engineer with strong mathematical foundations. I build AI assistant tools and computational models. Currently transitioning into ML, exploring nature-inspired algorithms and intuitive UIs.</p>
+    <section class="fade-in" data-i18n-section="about" style="--delay:0.6s">
+      <h2 data-i18n="about_heading"></h2>
+      <p data-i18n="about_text"></p>
     </section>
-
     <hr>
 
-    <section class="fade-in" style="animation-delay: 0.6s">
-      <h2>🚀 Projects</h2>
+    <section class="fade-in" data-i18n-section="projects" style="--delay:0.8s">
+      <h2 data-i18n="projects_heading"></h2>
 
-      <div class="project-card">
-        <h3>🧠 AI Assistant for Engineers</h3>
-        <p>Conversational tool using the OpenAI API to support engineers with documents and calculations.</p>
-        <p><strong>Tech:</strong> Python, Flask, GPT API, SQLite</p>
+      <div class="project-card" data-hover>
+        <div class="project-card-inner">
+          <h3 data-i18n="proj1_title"></h3>
+          <p data-i18n="proj1_text"></p>
+        </div>
       </div>
 
-      <div class="project-card">
-        <h3>✈️ Canard Wing Calculator</h3>
-        <p>GUI tool for calculating aerodynamic properties of canard aircraft configurations.</p>
-        <p><strong>Tech:</strong> PyQt5, NumPy, Matplotlib</p>
+      <div class="project-card" data-hover>
+        <div class="project-card-inner">
+          <h3 data-i18n="proj2_title"></h3>
+          <p data-i18n="proj2_text"></p>
+        </div>
       </div>
     </section>
-
     <hr>
 
-    <section class="fade-in" style="animation-delay: 0.8s">
-      <h2>🍃 Skills</h2>
+    <section class="fade-in" data-i18n-section="skills" style="--delay:1s">
+      <h2 data-i18n="skills_heading"></h2>
       <ul>
-        <li><strong>Languages:</strong> Python, C++, SQL, MATLAB</li>
-        <li><strong>Frameworks:</strong> PyTorch, FastAPI, Flask, Pandas, NumPy</li>
-        <li><strong>Tools:</strong> Docker, Git, Linux, Bash</li>
-        <li><strong>Topics:</strong> Data preprocessing, API development, GUI design</li>
+        <li>Python, C++, SQL, MATLAB</li>
+        <li>PyTorch, FastAPI, Flask, Pandas, NumPy</li>
+        <li>Docker, Git, Linux, Bash</li>
+        <li>Data preprocessing, API dev, GUI design</li>
       </ul>
     </section>
-
     <hr>
 
-    <section class="fade-in" style="animation-delay: 1s">
-      <h2>📄 Resume & Contact</h2>
-      <a href="resume.pdf" class="button" target="_blank">📄 Download Resume</a>
-      <div style="margin-top: 1rem;">
-        <span class="icon-link"><a href="https://github.com/Nofflll" target="_blank"><img src="assets/icons/github.svg" alt="GitHub"></a></span>
-        <span class="icon-link"><a href="https://linkedin.com/in/nikitapuchkov" target="_blank"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a></span>
-        <span class="icon-link"><a href="mailto:your_email@example.com"><img src="assets/icons/email.svg" alt="Email"></a></span>
+    <section class="fade-in" data-i18n-section="resume" style="--delay:1.2s">
+      <h2 data-i18n="resume_heading"></h2>
+      <a href="resume.pdf" class="button" data-i18n="resume_button" target="_blank"></a>
+      <p><strong data-i18n="resume_summary_title"></strong> <span data-i18n="resume_summary"></span></p>
+      <h3 data-i18n="experience_title"></h3>
+      <p data-i18n="experience_item"></p>
+      <h3 data-i18n="education_title"></h3>
+      <p data-i18n="education_item"></p>
+      <h3 data-i18n="languages_title"></h3>
+      <p data-i18n="languages_text"></p>
+
+      <div class="icons">
+        <a href="https://github.com/Nofflll" target="_blank"><img src="assets/icons/github.svg" alt="GitHub"></a>
+        <a href="https://linkedin.com/in/nikitapuchkov" target="_blank"><img src="assets/icons/linkedin.svg" alt="LinkedIn"></a>
+        <a href="mailto:your_email@example.com"><img src="assets/icons/email.svg" alt="Email"></a>
       </div>
     </section>
-
-    <footer class="fade-in" style="animation-delay: 1.2s">
-      <p><sub>Nature meets code – built with ❤️ and soft ✨</sub></p>
-    </footer>
+    <footer class="fade-in" data-i18n="footer" style="--delay:1.4s"><p></p></footer>
   </main>
 
   <script>
+    // Theme toggle
     document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('theme-toggle');
-      toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
+      document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('dark');
+
+      // Multi-language
+      function setLanguage(lang) {
+        const data = JSON.parse(document.getElementById('lang-' + lang).textContent);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          el.innerText = data[key];
+        });
+      }
+      window.setLanguage = setLanguage;
+      setLanguage('en');
+    });
+
+    // Parallax hover effect
+    document.querySelectorAll('[data-hover]').forEach(card => {
+      const inner = card.querySelector('.project-card-inner');
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width - .5) * 2;
+        const y = ((e.clientY - r.top) / r.height - .5) * -2;
+        inner.style.transform = `rotateY(${x * 5}deg) rotateX(${y * 5}deg)`;
       });
+      card.addEventListener('mouseleave', () => (inner.style.transform = 'rotateX(0) rotateY(0)'));
     });
   </script>
 </body>
