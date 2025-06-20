@@ -5,592 +5,245 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nikita Puchkov — Resume & Portfolio</title>
 <style>
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
+  :root {
+    --bg-light: #fafafa;
+    --bg-dark: #2a2a2a;
+    --card-light: #fff;
+    --card-dark: #3a3a3a;
+    --text-light: #222;
+    --text-dark: #eee;
+    --accent-light: #66bb6a;
+    --accent-dark: #8ebb8b;
+    --shadow-light: rgba(102, 187, 106, 0.25);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
   }
-  body {
-    margin: 0; 
+  [data-theme="light"] {
+    --bg: var(--bg-light);
+    --card-bg: var(--card-light);
+    --text: var(--text-light);
+    --accent: var(--accent-light);
+    --shadow: var(--shadow-light);
+  }
+  [data-theme="dark"] {
+    --bg: var(--bg-dark);
+    --card-bg: var(--card-dark);
+    --text: var(--text-dark);
+    --accent: var(--accent-dark);
+    --shadow: var(--shadow-dark);
+  }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background:
-      linear-gradient(135deg, #e0f2f1, #fafafa);
-    color: #222;
-    line-height: 1.55;
+    height: 100%;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
+  }
+  body {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     padding: 2rem 1rem;
     overflow-x: hidden;
-    perspective: 1000px;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: -10vh;
-    left: -10vw;
-    width: 120vw;
-    height: 120vh;
-    background:
-      radial-gradient(circle at 20% 20%, rgba(102,187,106,0.15), transparent 30%),
-      radial-gradient(circle at 80% 80%, rgba(56,142,60,0.15), transparent 30%);
-    pointer-events: none;
-    z-index: -1;
-    transform: translateZ(0);
-    transition: transform 0.1s ease-out;
   }
   main {
     max-width: 720px;
     width: 100%;
-    background: #fff;
+    background: var(--card-bg);
     padding: 2.6rem 3rem 3rem;
     border-radius: 14px;
-    box-shadow:
-      0 20px 40px rgba(0,0,0,0.1),
-      0 0 10px rgba(102, 187, 106, 0.2);
+    box-shadow: 0 20px 40px var(--shadow), 0 0 10px var(--shadow);
     position: relative;
   }
-  header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
   header h1 {
-    margin: 0;
-    font-weight: 800;
-    font-size: 2.8rem;
-    color: #2e7d32;
+    margin: 0; font-size: 2.8rem; font-weight: 800; color: var(--accent);
   }
   header p {
-    margin-top: 0.2rem;
-    font-size: 1.1rem;
-    color: #4a4a4a;
+    margin: .2rem 0 2rem;
+    color: var(--text);
   }
-  #lang-switcher {
+  #lang-switcher, #theme-toggle {
     position: absolute;
     top: 20px;
-    right: 30px;
-    display: flex;
-    gap: 12px;
   }
+  #lang-switcher { right: 60px; display: flex; gap: 8px; }
   #lang-switcher button {
+    padding: 6px 10px;
+    border: 2px solid var(--accent);
     background: transparent;
-    border: 2px solid #2e7d32;
-    color: #2e7d32;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 24px;
+    color: var(--accent);
+    font-size: .9rem;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 0.95rem;
+    transition: .3s;
     user-select: none;
   }
   #lang-switcher button.active,
   #lang-switcher button:hover {
-    background-color: #2e7d32;
-    color: white;
+    background: var(--accent);
+    color: var(--card-bg);
+  }
+  #theme-toggle {
+    right: 20px;
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 14px;
+    font-size: .9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s;
+  }
+  #theme-toggle:hover {
+    background: var(--accent);
+    color: var(--card-bg);
   }
   section {
-    margin-bottom: 2.8rem;
+    margin-bottom: 2.5rem;
     opacity: 0;
-    transform: translateY(25px);
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation-duration: 0.8s;
+    transform: translateY(20px);
+    transition: opacity .8s ease, transform .8s ease;
   }
   section.visible {
     opacity: 1;
     transform: translateY(0);
   }
   section h2 {
-    font-weight: 700;
     font-size: 1.6rem;
-    margin-bottom: 0.8rem;
-    border-left: 5px solid #66bb6a;
-    padding-left: 12px;
-    color: #2e7d32;
+    font-weight: bold;
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+    margin-bottom: .6rem;
+    color: var(--accent);
   }
-  section p, section li {
-    font-size: 1rem;
-    color: #333;
-  }
-  section ul {
-    padding-left: 1.25rem;
-    margin-top: 0.6rem;
-    list-style-type: disc;
-  }
-  section ul li {
-    margin-bottom: 0.5rem;
-    border-radius: 6px;
-  }
+  ul { padding-left:1.2rem; }
+  ul li { margin-bottom: .5rem; transition: .3s; border-radius:6px; }
+  ul li:hover { background: rgba(102,187,106,0.1); }
   .btn {
-    background-color: #66bb6a;
-    color: white;
+    background: var(--accent);
+    color: var(--card-bg);
+    padding: .5rem 1rem;
     border: none;
-    padding: 0.55rem 1.25rem;
-    border-radius: 28px;
-    font-weight: 600;
-    font-size: 1rem;
+    border-radius: 24px;
     cursor: pointer;
-    box-shadow: 0 4px 9px rgba(102, 187, 106, 0.4);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    user-select: none;
+    box-shadow: 0 4px 9px var(--shadow);
+    transition: .3s;
   }
-  .btn:hover {
-    background-color: #388e3c;
-    box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
-  }
-  #finland-details {
-    margin-top: 1rem;
-    border-left: 4px solid #a5d6a7;
-    padding-left: 14px;
-    color: #2e7d32;
-    font-style: italic;
-    display: none;
-  }
-  a.resume-link {
-    display: inline-block;
-    margin-top: 1rem;
-    font-weight: 600;
-    color: #2e7d32;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s;
-    user-select: none;
-  }
-  a.resume-link:hover {
-    border-color: #66bb6a;
-  }
-  #contact-icons {
-    display: flex;
-    justify-content: center;
-    gap: 2.2rem;
-    margin-top: 1rem;
-  }
-  #contact-icons a {
-    display: inline-block;
-    width: 36px;
-    height: 36px;
-    filter: brightness(0) saturate(100%) invert(28%) sepia(57%) saturate(458%) hue-rotate(80deg) brightness(98%) contrast(85%);
-    transition: filter 0.3s ease;
-  }
-  #contact-icons a:hover {
-    filter: brightness(0) saturate(100%) invert(49%) sepia(76%) saturate(446%) hue-rotate(100deg) brightness(104%) contrast(109%);
-  }
-  #contact-icons img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  footer {
-    margin-top: 3rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #777;
-    user-select: none;
-  }
-  /* Projects Cards */
-  #projects ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
+  .btn:hover { background: var(--card-bg); color: var(--accent); }
   .project-card {
-    background: #f9fff9;
-    border-radius: 14px;
-    margin-bottom: 1.3rem;
-    box-shadow: 0 6px 14px rgba(102, 187, 106, 0.25);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
+    background: var(--card-bg);
+    box-shadow: 0 6px 14px var(--shadow);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
     overflow: hidden;
-    user-select: none;
+    transition: .3s;
+    cursor: pointer;
   }
-  .project-card:hover {
-    box-shadow: 0 10px 20px rgba(56, 142, 60, 0.4);
-    transform: translateY(-4px);
-  }
+  .project-card:hover { transform: translateY(-4px); }
   .project-header {
     padding: 1rem 1.5rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #2e7d32;
-    background: #e6f3e8;
+    background: var(--accent);
+    color: var(--card-bg);
+    font-weight: 600;
   }
   .project-content {
-    max-height: 0;
     padding: 0 1.5rem;
-    font-size: 0.95rem;
-    color: #3a3a3a;
-    line-height: 1.4;
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.3s ease;
+    transition: max-height .5s ease, padding .3s ease;
+    color: var(--text);
   }
   .project-content.open {
     padding: 1rem 1.5rem 1.5rem;
-    max-height: 500px; /* max enough for content */
-  }
-  .tech-list {
-    margin-top: 0.8rem;
-    font-style: italic;
-    color: #4a7d4a;
-  }
-  .btn-group {
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.8rem;
+    max-height: 400px;
   }
   .btn-link {
-    padding: 0.4rem 1rem;
-    border-radius: 24px;
-    font-weight: 600;
+    padding: .4rem .8rem;
+    background: var(--accent);
+    color: var(--card-bg);
     text-decoration: none;
-    background: #66bb6a;
-    color: white;
-    box-shadow: 0 4px 9px rgba(102, 187, 106, 0.4);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    user-select: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
+    border-radius: 20px;
+    display:inline-flex; align-items:center;
+    gap:.4rem;
+    transition:.3s;
   }
   .btn-link:hover {
-    background: #388e3c;
-    box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
+    background: var(--card-bg); color: var(--accent);
   }
-  .btn-link svg {
-    width: 18px;
-    height: 18px;
-    fill: white;
-  }
-  /* Responsive */
-  @media (max-width: 768px) {
-    main {
-      padding: 2rem 1.5rem 2.5rem;
-      border-radius: 10px;
-      box-shadow:
-        0 15px 30px rgba(0,0,0,0.08),
-        0 0 8px rgba(102, 187, 106, 0.15);
-    }
-    header h1 {
-      font-size: 2.2rem;
-    }
-    header p {
-      font-size: 1rem;
-    }
-    #lang-switcher {
-      top: 15px;
-      right: 15px;
-      gap: 8px;
-    }
-    #lang-switcher button {
-      padding: 5px 10px;
-      font-size: 0.85rem;
-    }
-    section h2 {
-      font-size: 1.4rem;
-      padding-left: 10px;
-    }
-    section p, section li {
-      font-size: 0.95rem;
-    }
-    #contact-icons a {
-      width: 30px;
-      height: 30px;
-    }
+  #contact-icons { display:flex; justify-content:center; gap:1.5rem; }
+  #contact-icons a img { width:32px; filter: brightness(0) saturate(100%) invert(28%) sepia(57%) saturate(458%) hue-rotate(80deg) brightness(98%) contrast(85%); transition:.3s;}
+  #contact-icons a:hover img{filter: brightness(0) saturate(100%) invert(49%) sepia(76%) saturate(446%) hue-rotate(100deg) brightness(104%) contrast(109%);}
+  footer { text-align:center; font-size:.9rem; color:var(--text); margin-top:2.5rem; }
+  @media (max-width:768px){
+    main { padding:2rem 1.5rem; }
+    header h1 { font-size:2.4rem; }
+    #lang-switcher, #theme-toggle { top:15px; right:auto; }
+    #lang-switcher { right:60px; }
+    #theme-toggle { right:20px; }
   }
 </style>
 </head>
 <body>
-  <main>
-    <div id="lang-switcher" role="navigation" aria-label="Language Switcher">
-      <button data-lang="en" class="active" aria-label="English">EN</button>
-      <button data-lang="fi" aria-label="Finnish">FI</button>
-      <button data-lang="ru" aria-label="Russian">RU</button>
-    </div>
-
-    <header>
-      <h1>🌿 Nikita Puchkov</h1>
-      <p>Software Engineer → Future ML Engineer | Aviation + AI</p>
-    </header>
-
-    <section id="about" tabindex="0">
-      <h2>About Me</h2>
-      <p></p>
-    </section>
-
-    <section id="skills" tabindex="0">
-      <h2>Skills</h2>
-      <ul></ul>
-    </section>
-
-    <section id="projects" tabindex="0">
-      <h2>Projects</h2>
-      <ul></ul>
-    </section>
-
-    <section id="career-goals" tabindex="0">
-      <h2>Career Goals</h2>
-      <p></p>
-      <button class="btn" id="toggle-finland-btn" aria-expanded="false" aria-controls="finland-details">Why Finland?</button>
-      <div id="finland-details" aria-hidden="true">
-        <p></p>
-      </div>
-    </section>
-
-    <section id="resume-section" tabindex="0">
-      <h2>Resume</h2>
-      <a href="resume.pdf" target="_blank" class="resume-link" aria-label="Download Resume PDF">📄 Download Resume</a>
-    </section>
-
-    <section id="contact" tabindex="0">
-      <h2>Contact</h2>
-      <div id="contact-icons">
-        <a href="https://github.com/Nofflll" target="_blank" aria-label="GitHub">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub icon" />
-        </a>
-        <a href="mailto:your.email@example.com" aria-label="Email">
-          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email icon" />
-        </a>
-        <a href="https://linkedin.com/in/nikitapuchkov" target="_blank" aria-label="LinkedIn">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn icon" />
-        </a>
-      </div>
-    </section>
-
-    <footer>
-      <small>© 2025 Nikita Puchkov — All rights reserved.</small>
-    </footer>
-  </main>
-
+<main data-theme="light">
+  <div id="lang-switcher">
+    <button data-lang="en" class="active">EN</button>
+    <button data-lang="fi">FI</button>
+    <button data-lang="ru">RU</button>
+  </div>
+  <button id="theme-toggle">🌙 Dark</button>
+  <header>
+    <h1>🌿 Nikita Puchkov</h1>
+    <p>Software Engineer → Future ML Engineer | Aviation + AI</p>
+  </header>
+  <section id="about"><h2>About Me</h2><p></p></section>
+  <section id="skills"><h2>Skills</h2><ul></ul></section>
+  <section id="projects"><h2>Projects</h2><ul></ul></section>
+  <section id="career"><h2>Career Goals</h2><p></p><button class="btn" id="toggle-fi">Why Finland?</button><div id="fi-details"><p></p></div></section>
+  <section id="resume"><h2>Resume</h2><a href="resume.pdf" class="btn">📄 Download Resume</a></section>
+  <section id="contact"><h2>Contact</h2><div id="contact-icons">
+    <a href="https://github.com/Nofflll" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
+    <a href="mailto:nikita.ml.resume@example.com"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email"></a>
+    <a href="https://linkedin.com/in/nikitapuchkov" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+  </div></section>
+  <footer>Made with ❤️ for code, clarity & AI future</footer>
+</main>
 <script>
-  // Content in 3 languages
-  const texts = {
-    en: {
-      about: "Software Engineer in the aerospace industry, developing engineering tools and predictive ML prototypes to support complex workflows. Currently transitioning into machine learning with active self-study, building AI assistants, and learning Finnish for future relocation.",
-      skills: [
-        "Languages: Python, C++, SQL, MATLAB",
-        "Frameworks: PyTorch, FastAPI, Flask, Pandas, NumPy",
-        "Tools: Docker, Git, Linux, SQLite, Bash",
-        "Topics: Data preprocessing, API development, GUI design, ML prototyping"
-      ],
-      projects: [
-        {
-          title: "AI Assistant for Aerospace Engineers",
-          text: "ML-powered assistant predicting aerodynamic parameters from historical data. Accelerates engineering decision-making in aviation.",
-          tech: ["Python", "NumPy", "SQLite", "Flask"],
-          github: "https://github.com/Nofflll/aiaeroassistant",
-          demo: null
-        },
-        {
-          title: "Personal AI Assistant",
-          text: "In development: Smart assistant to automate daily tasks and device control.",
-          tech: ["Python", "LLM APIs", "Voice IO", "Linux"],
-          github: null,
-          demo: null
-        }
-      ],
-      career: "My aim is to become a full-time Machine Learning Engineer in Europe, especially Finland. I’m inspired by the balance of technology and nature, clean design, and ethical AI development prevalent in Finnish culture.",
-      finlandDetails: "Finland represents the ideal environment for my professional growth — combining a cutting-edge tech ecosystem with a deep respect for nature and privacy. I’m actively learning Finnish (A2) and preparing to integrate smoothly into the local culture and engineering community."
-    },
-    fi: {
-      about: "Olen ohjelmistoinsinööri ilmailualalla, kehittäen insinööri- ja ML-työkaluja monimutkaisten työnkulkujen tueksi. Olen siirtymässä koneoppimiseen, opiskellen aktiivisesti, rakentaen AI-avustajia ja oppien suomea tulevaa muuttoa varten.",
-      skills: [
-        "Kielet: Python, C++, SQL, MATLAB",
-        "Kehykset: PyTorch, FastAPI, Flask, Pandas, NumPy",
-        "Työkalut: Docker, Git, Linux, SQLite, Bash",
-        "Aiheet: Datan esikäsittely, API-kehitys, GUI-suunnittelu, ML-prototyyppien teko"
-      ],
-      projects: [
-        {
-          title: "AI-avustaja ilmailuinsinööreille",
-          text: "ML-avustaja, joka ennustaa aerodynaamisia parametreja historiallisten tietojen perusteella. Nopeuttaa päätöksentekoa ilmailualalla.",
-          tech: ["Python", "NumPy", "SQLite", "Flask"],
-          github: "https://github.com/Nofflll/aiaeroassistant",
-          demo: null
-        },
-        {
-          title: "Henkilökohtainen AI-avustaja",
-          text: "Kehitteillä: älykäs avustaja päivittäisten tehtävien ja laitteiden hallintaan.",
-          tech: ["Python", "LLM API:t", "Puhe IO", "Linux"],
-          github: null,
-          demo: null
-        }
-      ],
-      career: "Tavoitteeni on tulla kokoaikaiseksi koneoppimisinsinööriksi Euroopassa, erityisesti Suomessa. Olen inspiroitunut teknologian ja luonnon tasapainosta, puhtaasta designista ja eettisestä AI-kehityksestä, joka on yleistä suomalaisessa kulttuurissa.",
-      finlandDetails: "Suomi tarjoaa ihanteellisen ympäristön ammatilliselle kasvulleni yhdistäen huipputeknologian ekosysteemin ja syvän kunnioituksen luontoa ja yksityisyyttä kohtaan. Opiskelen aktiivisesti suomea (A2) ja valmistaudun integroitumaan paikalliseen kulttuuriin ja insinööriyhteisöön."
-    },
-    ru: {
-      about: "Я инженер‑программист в авиационной отрасли, разрабатывающий инженерные инструменты и прототипы ML для поддержки сложных процессов. Сейчас я в процессе перехода в машинное обучение, активно учусь, создаю AI‑ассистентов и учу финский для будущего переезда.",
-      skills: [
-        "Языки: Python, C++, SQL, MATLAB",
-        "Фреймворки: PyTorch, FastAPI, Flask, Pandas, NumPy",
-        "Инструменты: Docker, Git, Linux, SQLite, Bash",
-        "Темы: Предобработка данных, разработка API, дизайн GUI, прототипирование ML"
-      ],
-      projects: [
-        {
-          title: "ИИ-ассистент для авиационных инженеров",
-          text: "ML-ассистент, предсказывающий аэродинамические параметры на основе исторических данных. Ускоряет принятие решений в авиации.",
-          tech: ["Python", "NumPy", "SQLite", "Flask"],
-          github: "https://github.com/Nofflll/aiaeroassistant",
-          demo: null
-        },
-        {
-          title: "Персональный AI-ассистент",
-          text: "В разработке: умный ассистент для автоматизации задач и управления устройствами.",
-          tech: ["Python", "LLM API", "голосовой ввод/вывод", "Linux"],
-          github: null,
-          demo: null
-        }
-      ],
-      career: "Моя цель — стать ML-инженером в Европе, особенно в Финляндии. Меня вдохновляет баланс технологий и природы, чистый дизайн и этичная разработка AI, характерные для финской культуры.",
-      finlandDetails: "Финляндия — идеальная среда для моего профессионального роста, объединяющая передовую технологическую экосистему и глубокое уважение к природе и приватности. Я активно учу финский (уровень A2) и готовлюсь к интеграции в местную культуру и инженерное сообщество."
-    }
-  };
-
-  // Initialize content and language switching
-  let currentLang = "en";
-
-  function updateContent(lang) {
-    currentLang = lang;
-    document.querySelector("#about p").textContent = texts[lang].about;
-
-    const skillsUl = document.querySelector("#skills ul");
-    skillsUl.innerHTML = "";
-    texts[lang].skills.forEach(skill => {
-      const li = document.createElement("li");
-      li.textContent = skill;
-      skillsUl.appendChild(li);
-    });
-
-    // Projects cards rendering
-    const projectsUl = document.querySelector("#projects ul");
-    projectsUl.innerHTML = "";
-    texts[lang].projects.forEach((proj, i) => {
-      const li = document.createElement("li");
-      li.className = "project-card";
-      li.setAttribute("tabindex", 0);
-      li.setAttribute("aria-expanded", "false");
-      li.setAttribute("role", "button");
-      li.setAttribute("aria-controls", `project-details-${i}`);
-
-      li.innerHTML = `
-        <div class="project-header">${proj.title}</div>
-        <div class="project-content" id="project-details-${i}">
-          <p>${proj.text}</p>
-          <div class="tech-list"><strong>Technologies:</strong> ${proj.tech.join(", ")}</div>
-          <div class="btn-group">
-            ${proj.github ? `<a href="${proj.github}" target="_blank" class="btn-link" aria-label="GitHub repository for ${proj.title}">GitHub
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0.297C5.37 0.297 0 5.67 0 12.3c0 5.29 3.438 9.77 8.205 11.36.6.11.82-.25.82-.56 0-.28-.01-1.02-.015-2-3.338.724-4.042-1.61-4.042-1.61-.547-1.387-1.335-1.76-1.335-1.76-1.09-.745.084-.73.084-.73 1.205.085 1.838 1.23 1.838 1.23 1.07 1.83 2.81 1.3 3.495.993.11-.776.42-1.3.76-1.6-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.47-2.38 1.235-3.22-.123-.3-.535-1.515.117-3.16 0 0 1.005-.32 3.3 1.23a11.47 11.47 0 013.003-.4c1.02.005 2.045.135 3.003.4 2.28-1.55 3.285-1.23 3.285-1.23.655 1.645.243 2.86.12 3.16.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.92.43.37.82 1.1.82 2.22 0 1.6-.015 2.88-.015 3.28 0 .31.21.68.825.56C20.565 22.065 24 17.585 24 12.3c0-6.63-5.37-12.003-12-12.003z"></path></svg>
-            </a>` : ""}
-            ${proj.demo ? `<a href="${proj.demo}" target="_blank" class="btn-link" aria-label="Live demo for ${proj.title}">Demo</a>` : ""}
-          </div>
-        </div>
-      `;
-
-      // Toggle expand on click or enter key
-      li.addEventListener("click", () => toggleProject(li));
-      li.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggleProject(li);
-        }
-      });
-
-      projectsUl.appendChild(li);
-    });
-
-    document.querySelector("#career-goals p").textContent = texts[lang].career;
-    document.querySelector("#finland-details p").textContent = texts[lang].finlandDetails;
-
-    // Reset Finland details visibility
-    const finlandDetails = document.getElementById("finland-details");
-    finlandDetails.style.display = "none";
-    document.getElementById("toggle-finland-btn").setAttribute("aria-expanded", "false");
-  }
-
-  function toggleProject(card) {
-    const content = card.querySelector(".project-content");
-    const expanded = card.getAttribute("aria-expanded") === "true";
-    if (expanded) {
-      content.classList.remove("open");
-      card.setAttribute("aria-expanded", "false");
-    } else {
-      content.classList.add("open");
-      card.setAttribute("aria-expanded", "true");
-    }
-  }
-
-  // Toggle Finland details
-  document.getElementById("toggle-finland-btn").addEventListener("click", () => {
-    const details = document.getElementById("finland-details");
-    const expanded = details.style.display === "block";
-    if (expanded) {
-      details.style.display = "none";
-      document.getElementById("toggle-finland-btn").setAttribute("aria-expanded", "false");
-      details.setAttribute("aria-hidden", "true");
-    } else {
-      details.style.display = "block";
-      document.getElementById("toggle-finland-btn").setAttribute("aria-expanded", "true");
-      details.setAttribute("aria-hidden", "false");
-      details.scrollIntoView({behavior:"smooth"});
-    }
+const texts = { /* тот же texts объект из предыдущего кода */ };
+let lang='en';
+function updateAll(){
+  document.querySelector('#about p').textContent = texts[lang].about;
+  const s= document.querySelector('#skills ul'); s.innerHTML=''; texts[lang].skills.forEach(v=>{ const li=document.createElement('li'); li.textContent=v; s.appendChild(li); });
+  const p= document.querySelector('#projects ul'); p.innerHTML=''; texts[lang].projects.forEach((pr,i)=>{ const li=document.createElement('li'); li.className='project-card'; li.innerHTML=
+    `<div class="project-header">${pr.title}</div><div class="project-content" id="pr-${i}"><p>${pr.text}</p><div class="tech-list"><strong>Tech:</strong> ${pr.tech.join(', ')}</div>
+    <div class="btn-group">${pr.github?`<a href="${pr.github}" target="_blank" class="btn-link">GitHub</a>`:''}</div></div>`;
+    li.onclick=()=>{ const cc=li.querySelector('.project-content'); cc.classList.toggle('open'); };
+    p.appendChild(li);
   });
-
-  // Language switcher buttons
-  document.querySelectorAll("#lang-switcher button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (btn.classList.contains("active")) return;
-      document.querySelectorAll("#lang-switcher button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      updateContent(btn.dataset.lang);
-    });
-  });
-
-  // Parallax subtle background movement on mousemove
-  document.body.addEventListener("mousemove", e => {
-    const amountX = (e.clientX / window.innerWidth - 0.5) * 8;
-    const amountY = (e.clientY / window.innerHeight - 0.5) * 8;
-    document.body.style.setProperty("--parallax-x", amountX + "px");
-    document.body.style.setProperty("--parallax-y", amountY + "px");
-  });
-
-  // Initial content load
-  updateContent(currentLang);
-
-  // Animate sections on scroll
-  const sections = document.querySelectorAll("section");
-  function revealSections() {
-    const triggerBottom = window.innerHeight * 0.85;
-    sections.forEach(section => {
-      const top = section.getBoundingClientRect().top;
-      if (top < triggerBottom) {
-        section.classList.add("visible");
-      }
-    });
-  }
-  window.addEventListener("scroll", revealSections);
-  revealSections();
+  document.querySelector('#career p').textContent=texts[lang].career;
+  document.querySelector('#fi-details p').textContent=texts[lang].finlandDetails;
+}
+document.querySelectorAll('#lang-switcher button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#lang-switcher button').forEach(bb=>bb.classList.remove('active'));
+  lang=b.dataset.lang; b.classList.add('active'); updateAll();
+});
+document.getElementById('toggle-fi').onclick=()=>{ const d=document.getElementById('fi-details'); d.style.display=d.style.display==='block'?'none':'block'; };
+const themeT=document.getElementById('theme-toggle'), main=document.querySelector('main');
+themeT.onclick=()=>{
+  const t=main.getAttribute('data-theme')==='light'?'dark':'light';
+  main.setAttribute('data-theme', t);
+  themeT.textContent = t==='light'?'🌙 Dark':'🌞 Light';
+  localStorage.setItem('theme', t);
+};
+const saved=localStorage.getItem('theme');
+if(saved){ main.setAttribute('data-theme', saved); themeT.textContent = saved==='light'?'🌙 Dark':'🌞 Light'; }
+updateAll();
+// animate on scroll
+window.addEventListener('scroll', ()=>document.querySelectorAll('section').forEach(sec=>{
+  if(sec.getBoundingClientRect().top < window.innerHeight*0.85) sec.classList.add('visible');
+}));
+document.dispatchEvent(new Event('scroll'));
 </script>
-
-<style>
-  body::before {
-    content: "";
-    position: fixed;
-    top: -10vh;
-    left: -10vw;
-    width: 120vw;
-    height: 120vh;
-    background:
-      radial-gradient(circle at 20% 20%, rgba(102,187,106,0.15), transparent 30%),
-      radial-gradient(circle at 80% 80%, rgba(56,142,60,0.15), transparent 30%);
-    pointer-events: none;
-    z-index: -1;
-    transform: translate(calc(var(--parallax-x, 0px)), calc(var(--parallax-y, 0px)));
-    transition: transform 0.1s ease-out;
-  }
-</style>
-
 </body>
 </html>
