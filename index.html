@@ -26,8 +26,6 @@
     overflow-x: hidden;
     perspective: 1000px;
   }
-
-  /* Parallax background */
   body::before {
     content: "";
     position: fixed;
@@ -43,7 +41,6 @@
     transform: translateZ(0);
     transition: transform 0.1s ease-out;
   }
-
   main {
     max-width: 720px;
     width: 100%;
@@ -55,8 +52,6 @@
       0 0 10px rgba(102, 187, 106, 0.2);
     position: relative;
   }
-
-  /* Header */
   header {
     text-align: center;
     margin-bottom: 2rem;
@@ -72,8 +67,6 @@
     font-size: 1.1rem;
     color: #4a4a4a;
   }
-
-  /* Language Switcher */
   #lang-switcher {
     position: absolute;
     top: 20px;
@@ -98,8 +91,6 @@
     background-color: #2e7d32;
     color: white;
   }
-
-  /* Section styles */
   section {
     margin-bottom: 2.8rem;
     opacity: 0;
@@ -131,19 +122,8 @@
   }
   section ul li {
     margin-bottom: 0.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 6px;
   }
-  /* Hover effect on skills & projects */
-  #skills ul li:hover,
-  #projects ul li:hover {
-    background: #e8f5e9;
-    box-shadow: 0 6px 10px rgba(56, 142, 60, 0.25);
-    transform: translateY(-4px);
-    cursor: default;
-  }
-
-  /* Button */
   .btn {
     background-color: #66bb6a;
     color: white;
@@ -161,8 +141,6 @@
     background-color: #388e3c;
     box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
   }
-
-  /* Finland details */
   #finland-details {
     margin-top: 1rem;
     border-left: 4px solid #a5d6a7;
@@ -171,8 +149,6 @@
     font-style: italic;
     display: none;
   }
-
-  /* Resume Link */
   a.resume-link {
     display: inline-block;
     margin-top: 1rem;
@@ -186,8 +162,6 @@
   a.resume-link:hover {
     border-color: #66bb6a;
   }
-
-  /* Contact icons */
   #contact-icons {
     display: flex;
     justify-content: center;
@@ -209,8 +183,6 @@
     height: 100%;
     object-fit: contain;
   }
-
-  /* Footer */
   footer {
     margin-top: 3rem;
     text-align: center;
@@ -218,7 +190,79 @@
     color: #777;
     user-select: none;
   }
-
+  /* Projects Cards */
+  #projects ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .project-card {
+    background: #f9fff9;
+    border-radius: 14px;
+    margin-bottom: 1.3rem;
+    box-shadow: 0 6px 14px rgba(102, 187, 106, 0.25);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+  }
+  .project-card:hover {
+    box-shadow: 0 10px 20px rgba(56, 142, 60, 0.4);
+    transform: translateY(-4px);
+  }
+  .project-header {
+    padding: 1rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #2e7d32;
+    background: #e6f3e8;
+  }
+  .project-content {
+    max-height: 0;
+    padding: 0 1.5rem;
+    font-size: 0.95rem;
+    color: #3a3a3a;
+    line-height: 1.4;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+  }
+  .project-content.open {
+    padding: 1rem 1.5rem 1.5rem;
+    max-height: 500px; /* max enough for content */
+  }
+  .tech-list {
+    margin-top: 0.8rem;
+    font-style: italic;
+    color: #4a7d4a;
+  }
+  .btn-group {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.8rem;
+  }
+  .btn-link {
+    padding: 0.4rem 1rem;
+    border-radius: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    background: #66bb6a;
+    color: white;
+    box-shadow: 0 4px 9px rgba(102, 187, 106, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .btn-link:hover {
+    background: #388e3c;
+    box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
+  }
+  .btn-link svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+  }
   /* Responsive */
   @media (max-width: 768px) {
     main {
@@ -272,50 +316,25 @@
 
     <section id="about" tabindex="0">
       <h2>About Me</h2>
-      <p>
-        I'm a software engineer working in the aerospace industry, developing engineering tools and predictive ML prototypes to support complex workflows.
-        Currently transitioning into machine learning with active self-study, building AI assistants, and learning Finnish for future relocation.
-      </p>
+      <p></p>
     </section>
 
     <section id="skills" tabindex="0">
       <h2>Skills</h2>
-      <ul>
-        <li><strong>Languages:</strong> Python, C++, SQL, MATLAB</li>
-        <li><strong>Frameworks:</strong> PyTorch, FastAPI, Flask, Pandas, NumPy</li>
-        <li><strong>Tools:</strong> Docker, Git, Linux, SQLite, Bash</li>
-        <li><strong>Topics:</strong> Data preprocessing, API development, GUI design, ML prototyping</li>
-      </ul>
+      <ul></ul>
     </section>
 
     <section id="projects" tabindex="0">
       <h2>Projects</h2>
-      <ul>
-        <li>
-          <strong>AI Assistant for Aerospace Engineers</strong><br />
-          ML-powered assistant predicting aerodynamic parameters from historical data. Accelerates engineering decision-making in aviation.<br />
-          <em>Technologies:</em> Python, NumPy, SQLite, Flask
-        </li>
-        <li>
-          <strong>Personal AI Assistant</strong><br />
-          In development: Smart assistant to automate daily tasks and device control.<br />
-          <em>Technologies:</em> Python, LLM APIs, Voice IO, Linux
-        </li>
-      </ul>
+      <ul></ul>
     </section>
 
     <section id="career-goals" tabindex="0">
       <h2>Career Goals</h2>
-      <p>
-        My aim is to become a full-time Machine Learning Engineer in Europe, especially Finland. I’m inspired by the balance of technology and nature,
-        clean design, and ethical AI development prevalent in Finnish culture.
-      </p>
+      <p></p>
       <button class="btn" id="toggle-finland-btn" aria-expanded="false" aria-controls="finland-details">Why Finland?</button>
       <div id="finland-details" aria-hidden="true">
-        <p>
-          Finland represents the ideal environment for my professional growth — combining a cutting-edge tech ecosystem with a deep respect for nature and privacy.
-          I’m actively learning Finnish (A2) and preparing to integrate smoothly into the local culture and engineering community.
-        </p>
+        <p></p>
       </div>
     </section>
 
@@ -328,59 +347,27 @@
       <h2>Contact</h2>
       <div id="contact-icons">
         <a href="https://github.com/Nofflll" target="_blank" aria-label="GitHub">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo" />
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub icon" />
+        </a>
+        <a href="mailto:your.email@example.com" aria-label="Email">
+          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email icon" />
         </a>
         <a href="https://linkedin.com/in/nikitapuchkov" target="_blank" aria-label="LinkedIn">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" />
-        </a>
-        <a href="mailto:your_email@example.com" aria-label="Email">
-          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email Icon" />
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn icon" />
         </a>
       </div>
     </section>
 
     <footer>
-      Made with ❤️ for code, clarity & the future of AI
+      <small>© 2025 Nikita Puchkov — All rights reserved.</small>
     </footer>
   </main>
 
 <script>
-  // Animate sections on scroll
-  const sections = document.querySelectorAll('section');
-  const options = {
-    threshold: 0.2
-  };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, options);
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-
-  // Finland toggle
-  const finlandBtn = document.getElementById('toggle-finland-btn');
-  const finlandDetails = document.getElementById('finland-details');
-  finlandBtn.addEventListener('click', () => {
-    const expanded = finlandBtn.getAttribute('aria-expanded') === 'true';
-    finlandBtn.setAttribute('aria-expanded', !expanded);
-    if (finlandDetails.style.display === 'block') {
-      finlandDetails.style.display = 'none';
-      finlandDetails.setAttribute('aria-hidden', 'true');
-    } else {
-      finlandDetails.style.display = 'block';
-      finlandDetails.setAttribute('aria-hidden', 'false');
-    }
-  });
-
-  // Language Switcher (basic)
-  const langSwitcher = document.getElementById('lang-switcher');
+  // Content in 3 languages
   const texts = {
     en: {
-      about: "I'm a software engineer working in the aerospace industry, developing engineering tools and predictive ML prototypes to support complex workflows. Currently transitioning into machine learning with active self-study, building AI assistants, and learning Finnish for future relocation.",
+      about: "Software Engineer in the aerospace industry, developing engineering tools and predictive ML prototypes to support complex workflows. Currently transitioning into machine learning with active self-study, building AI assistants, and learning Finnish for future relocation.",
       skills: [
         "Languages: Python, C++, SQL, MATLAB",
         "Frameworks: PyTorch, FastAPI, Flask, Pandas, NumPy",
@@ -391,12 +378,16 @@
         {
           title: "AI Assistant for Aerospace Engineers",
           text: "ML-powered assistant predicting aerodynamic parameters from historical data. Accelerates engineering decision-making in aviation.",
-          tech: "Python, NumPy, SQLite, Flask"
+          tech: ["Python", "NumPy", "SQLite", "Flask"],
+          github: "https://github.com/Nofflll/aiaeroassistant",
+          demo: null
         },
         {
           title: "Personal AI Assistant",
           text: "In development: Smart assistant to automate daily tasks and device control.",
-          tech: "Python, LLM APIs, Voice IO, Linux"
+          tech: ["Python", "LLM APIs", "Voice IO", "Linux"],
+          github: null,
+          demo: null
         }
       ],
       career: "My aim is to become a full-time Machine Learning Engineer in Europe, especially Finland. I’m inspired by the balance of technology and nature, clean design, and ethical AI development prevalent in Finnish culture.",
@@ -414,12 +405,16 @@
         {
           title: "AI-avustaja ilmailuinsinööreille",
           text: "ML-avustaja, joka ennustaa aerodynaamisia parametreja historiallisten tietojen perusteella. Nopeuttaa päätöksentekoa ilmailualalla.",
-          tech: "Python, NumPy, SQLite, Flask"
+          tech: ["Python", "NumPy", "SQLite", "Flask"],
+          github: "https://github.com/Nofflll/aiaeroassistant",
+          demo: null
         },
         {
           title: "Henkilökohtainen AI-avustaja",
           text: "Kehitteillä: älykäs avustaja päivittäisten tehtävien ja laitteiden hallintaan.",
-          tech: "Python, LLM API:t, Puhe IO, Linux"
+          tech: ["Python", "LLM API:t", "Puhe IO", "Linux"],
+          github: null,
+          demo: null
         }
       ],
       career: "Tavoitteeni on tulla kokoaikaiseksi koneoppimisinsinööriksi Euroopassa, erityisesti Suomessa. Olen inspiroitunut teknologian ja luonnon tasapainosta, puhtaasta designista ja eettisestä AI-kehityksestä, joka on yleistä suomalaisessa kulttuurissa.",
@@ -437,12 +432,16 @@
         {
           title: "ИИ-ассистент для авиационных инженеров",
           text: "ML-ассистент, предсказывающий аэродинамические параметры на основе исторических данных. Ускоряет принятие решений в авиации.",
-          tech: "Python, NumPy, SQLite, Flask"
+          tech: ["Python", "NumPy", "SQLite", "Flask"],
+          github: "https://github.com/Nofflll/aiaeroassistant",
+          demo: null
         },
         {
           title: "Персональный AI-ассистент",
           text: "В разработке: умный ассистент для автоматизации задач и управления устройствами.",
-          tech: "Python, LLM API, голосовой ввод/вывод, Linux"
+          tech: ["Python", "LLM API", "голосовой ввод/вывод", "Linux"],
+          github: null,
+          demo: null
         }
       ],
       career: "Моя цель — стать ML-инженером в Европе, особенно в Финляндии. Меня вдохновляет баланс технологий и природы, чистый дизайн и этичная разработка AI, характерные для финской культуры.",
@@ -450,63 +449,146 @@
     }
   };
 
+  // Initialize content and language switching
+  let currentLang = "en";
+
   function updateContent(lang) {
-    document.querySelector('#about p').textContent = texts[lang].about;
+    currentLang = lang;
+    document.querySelector("#about p").textContent = texts[lang].about;
 
-    const skillsList = document.querySelector('#skills ul');
-    skillsList.innerHTML = '';
+    const skillsUl = document.querySelector("#skills ul");
+    skillsUl.innerHTML = "";
     texts[lang].skills.forEach(skill => {
-      const li = document.createElement('li');
+      const li = document.createElement("li");
       li.textContent = skill;
-      skillsList.appendChild(li);
+      skillsUl.appendChild(li);
     });
 
-    const projectsList = document.querySelector('#projects ul');
-    projectsList.innerHTML = '';
-    texts[lang].projects.forEach(proj => {
-      const li = document.createElement('li');
-      li.innerHTML = `<strong>${proj.title}</strong><br>${proj.text}<br><em>Technologies: ${proj.tech}</em>`;
-      projectsList.appendChild(li);
+    // Projects cards rendering
+    const projectsUl = document.querySelector("#projects ul");
+    projectsUl.innerHTML = "";
+    texts[lang].projects.forEach((proj, i) => {
+      const li = document.createElement("li");
+      li.className = "project-card";
+      li.setAttribute("tabindex", 0);
+      li.setAttribute("aria-expanded", "false");
+      li.setAttribute("role", "button");
+      li.setAttribute("aria-controls", `project-details-${i}`);
+
+      li.innerHTML = `
+        <div class="project-header">${proj.title}</div>
+        <div class="project-content" id="project-details-${i}">
+          <p>${proj.text}</p>
+          <div class="tech-list"><strong>Technologies:</strong> ${proj.tech.join(", ")}</div>
+          <div class="btn-group">
+            ${proj.github ? `<a href="${proj.github}" target="_blank" class="btn-link" aria-label="GitHub repository for ${proj.title}">GitHub
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0.297C5.37 0.297 0 5.67 0 12.3c0 5.29 3.438 9.77 8.205 11.36.6.11.82-.25.82-.56 0-.28-.01-1.02-.015-2-3.338.724-4.042-1.61-4.042-1.61-.547-1.387-1.335-1.76-1.335-1.76-1.09-.745.084-.73.084-.73 1.205.085 1.838 1.23 1.838 1.23 1.07 1.83 2.81 1.3 3.495.993.11-.776.42-1.3.76-1.6-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.47-2.38 1.235-3.22-.123-.3-.535-1.515.117-3.16 0 0 1.005-.32 3.3 1.23a11.47 11.47 0 013.003-.4c1.02.005 2.045.135 3.003.4 2.28-1.55 3.285-1.23 3.285-1.23.655 1.645.243 2.86.12 3.16.77.84 1.235 1.91 1.235 3.22 0 4.6-2.807 5.625-5.48 5.92.43.37.82 1.1.82 2.22 0 1.6-.015 2.88-.015 3.28 0 .31.21.68.825.56C20.565 22.065 24 17.585 24 12.3c0-6.63-5.37-12.003-12-12.003z"></path></svg>
+            </a>` : ""}
+            ${proj.demo ? `<a href="${proj.demo}" target="_blank" class="btn-link" aria-label="Live demo for ${proj.title}">Demo</a>` : ""}
+          </div>
+        </div>
+      `;
+
+      // Toggle expand on click or enter key
+      li.addEventListener("click", () => toggleProject(li));
+      li.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleProject(li);
+        }
+      });
+
+      projectsUl.appendChild(li);
     });
 
-    document.querySelector('#career-goals p').textContent = texts[lang].career;
-    document.querySelector('#finland-details p').textContent = texts[lang].finlandDetails;
+    document.querySelector("#career-goals p").textContent = texts[lang].career;
+    document.querySelector("#finland-details p").textContent = texts[lang].finlandDetails;
+
+    // Reset Finland details visibility
+    const finlandDetails = document.getElementById("finland-details");
+    finlandDetails.style.display = "none";
+    document.getElementById("toggle-finland-btn").setAttribute("aria-expanded", "false");
   }
 
-  // Init default language
-  let currentLang = 'en';
-  updateContent(currentLang);
+  function toggleProject(card) {
+    const content = card.querySelector(".project-content");
+    const expanded = card.getAttribute("aria-expanded") === "true";
+    if (expanded) {
+      content.classList.remove("open");
+      card.setAttribute("aria-expanded", "false");
+    } else {
+      content.classList.add("open");
+      card.setAttribute("aria-expanded", "true");
+    }
+  }
 
-  // Language switch buttons
-  document.querySelectorAll('#lang-switcher button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.dataset.lang === currentLang) return;
-      currentLang = btn.dataset.lang;
-      updateContent(currentLang);
-      document.querySelectorAll('#lang-switcher button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  // Toggle Finland details
+  document.getElementById("toggle-finland-btn").addEventListener("click", () => {
+    const details = document.getElementById("finland-details");
+    const expanded = details.style.display === "block";
+    if (expanded) {
+      details.style.display = "none";
+      document.getElementById("toggle-finland-btn").setAttribute("aria-expanded", "false");
+      details.setAttribute("aria-hidden", "true");
+    } else {
+      details.style.display = "block";
+      document.getElementById("toggle-finland-btn").setAttribute("aria-expanded", "true");
+      details.setAttribute("aria-hidden", "false");
+      details.scrollIntoView({behavior:"smooth"});
+    }
+  });
+
+  // Language switcher buttons
+  document.querySelectorAll("#lang-switcher button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (btn.classList.contains("active")) return;
+      document.querySelectorAll("#lang-switcher button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      updateContent(btn.dataset.lang);
     });
   });
 
-  // Parallax background movement
-  document.addEventListener('mousemove', e => {
-    const amountX = (e.clientX / window.innerWidth - 0.5) * 10;
-    const amountY = (e.clientY / window.innerHeight - 0.5) * 10;
-    document.body.style.setProperty('--parallax-x', amountX + 'px');
-    document.body.style.setProperty('--parallax-y', amountY + 'px');
-    document.body.querySelector('::before'); // Force repaint (optional)
+  // Parallax subtle background movement on mousemove
+  document.body.addEventListener("mousemove", e => {
+    const amountX = (e.clientX / window.innerWidth - 0.5) * 8;
+    const amountY = (e.clientY / window.innerHeight - 0.5) * 8;
+    document.body.style.setProperty("--parallax-x", amountX + "px");
+    document.body.style.setProperty("--parallax-y", amountY + "px");
   });
 
-  // Update ::before transform based on mouse (via CSS variable)
-  // We'll do it in CSS:
-  // body::before { transform: translate(calc(var(--parallax-x, 0) * 1px), calc(var(--parallax-y, 0) * 1px)); }
+  // Initial content load
+  updateContent(currentLang);
 
+  // Animate sections on scroll
+  const sections = document.querySelectorAll("section");
+  function revealSections() {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        section.classList.add("visible");
+      }
+    });
+  }
+  window.addEventListener("scroll", revealSections);
+  revealSections();
 </script>
 
 <style>
   body::before {
-    /* update transform with CSS variable */
+    content: "";
+    position: fixed;
+    top: -10vh;
+    left: -10vw;
+    width: 120vw;
+    height: 120vh;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(102,187,106,0.15), transparent 30%),
+      radial-gradient(circle at 80% 80%, rgba(56,142,60,0.15), transparent 30%);
+    pointer-events: none;
+    z-index: -1;
     transform: translate(calc(var(--parallax-x, 0px)), calc(var(--parallax-y, 0px)));
+    transition: transform 0.1s ease-out;
   }
 </style>
 
